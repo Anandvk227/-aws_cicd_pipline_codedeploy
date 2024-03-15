@@ -250,6 +250,7 @@ class TestEmployeeSignUp(BaseClass):
 
     @pytest.mark.run(order=18)
     @pytest.mark.regression
+    @pytest.mark.tests
     # @pytest.mark.skip(reason="skip for now")
     def test_ApproveSignedUpEmployee(self):
         self.logger = LogGen.loggen()
@@ -430,7 +431,7 @@ class TestEmployeeSignUp(BaseClass):
 
     @pytest.mark.run(order=16)
     @pytest.mark.regression
-    # @pytest.mark.tests
+    @pytest.mark.tests
 
     # @pytest.mark.flaky(rerun=3, rerun_delay=2)
     # def test_EmployeeSignUpWithValid(self, run_number, setup):

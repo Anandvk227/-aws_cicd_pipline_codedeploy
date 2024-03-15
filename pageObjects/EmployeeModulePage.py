@@ -30,12 +30,21 @@ class EmployeeModulePage:
         self.driver = driver
 
     def ClickPendingTab(self):
-        time.sleep(2)
-        self.driver.find_element(By.XPATH, self.Tab_Pending_xpath).click()
+        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.Tab_Pending_xpath))
+        )
+        element.click()
+        # self.driver.find_element(By.XPATH, self.Tab_Pending_xpath).click()
 
     def ClickRejectTab(self):
-        time.sleep(2)
-        self.driver.find_element(By.XPATH, self.Tab_Reject_xpath).click()
+        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.Tab_Reject_xpath))
+        )
+        element.click()
+        # time.sleep(2)
+        # self.driver.find_element(By.XPATH, self.Tab_Reject_xpath).click()
 
     def setPendingSearchField(self, Password):
         element = WebDriverWait(self.driver, 10).until(
@@ -67,6 +76,7 @@ class EmployeeModulePage:
         # self.driver.find_element(By.XPATH, self.DD_Status_xpath).click()
 
     def ClickStatusApprove(self):
+        time.sleep(2)
         self.driver.find_element(By.XPATH, self.DD_StatusApprove_xpath).click()
 
     def ClickDepartmentDD(self):

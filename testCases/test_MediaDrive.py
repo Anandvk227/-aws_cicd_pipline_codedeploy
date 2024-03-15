@@ -305,7 +305,7 @@ class TestMediaDrive(BaseClass):
             self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_MediaDriveshare.png")
             assert False
-
+        time.sleep(1)
         self.md.clickClosetoaster()
         # File Upload
         self.md.clickButtonNew()
@@ -348,6 +348,7 @@ class TestMediaDrive(BaseClass):
                 assert False
 
         self.md.setSearchField(self.first_name2)
+        time.sleep(3)
         self.logger.info("***** TC_20 	Verify 'Share' option****")
         self.md.clickthreeDotsMenu()
         self.md.clickthreeDotsShare()
@@ -820,7 +821,7 @@ class TestMediaDrive(BaseClass):
                 assert False
 
 
-    # @pytest.mark.test
+    @pytest.mark.tests
     @pytest.mark.run(order=106)
     def test_TrashEmployeeMedia(self):
         self.test_MediaDrive()

@@ -67,7 +67,7 @@ class Test_Certification(BaseClass):
 
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.babi
+    @pytest.mark.tests
     @pytest.mark.regression
     @pytest.mark.run(order=71)
     # @pytest.mark.skip(reason="Skipping this test")
@@ -105,13 +105,25 @@ class Test_Certification(BaseClass):
 
         self.cp.clickonsave()
         self.logger.info("*********** TC_01 Create the marking sysyem both published and unpublished list ***************")
-        time.sleep(3)
-        if "Acronym created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** Acronym creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Acronym creation test is failed **********")
+        # time.sleep(3)
+        # if "Acronym created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** Acronym creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Acronym creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymcreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Acronym created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymcreation.png")
             assert False
         time.sleep(3)
@@ -120,13 +132,25 @@ class Test_Certification(BaseClass):
         self.logger.info("*********** TC_02 move the unpublish to publish. the marking System  **********")
         self.cp.clickonacronympublish()
         self.logger.info("************ TC_03 edit and delete the marking system ***************")
-        time.sleep(3)
-        if "Acronym updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** Acronym update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Acronym update test is failed **********")
+        # time.sleep(3)
+        # if "Acronym updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** Acronym update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Acronym update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Acronym updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymupdate.png")
             assert False
         time.sleep(3)
@@ -153,7 +177,19 @@ class Test_Certification(BaseClass):
             self.logger.error("************** Question creation test is failed **********")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_questioncreation.png")
             assert False
-        time.sleep(3)
+        xpath = "//div[contains(text(),'Question created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_questioncreation.png")
+            assert False
+        # time.sleep(3)
         self.cp.clickonpublishedtab()
         self.cp.clickonunpublishedtab()
         time.sleep(2)
@@ -161,13 +197,25 @@ class Test_Certification(BaseClass):
         self.cp.clickonquestionedit()
         self.cp.clickonbuttonedit()
         self.cp.clickonquestionpublish()
-        time.sleep(3)
-        if "Question update and published successfully" in self.driver.page_source:
-            self.logger.info("********** Question update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Question update test is failed **********")
+        # time.sleep(3)
+        # if "Question update and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** Question update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Question update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_questionupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Question update and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_questionupdate.png")
             assert False
         time.sleep(3)
@@ -199,13 +247,25 @@ class Test_Certification(BaseClass):
         self.cp.setsignname(self.signname)
         self.cp.setsigndesignation(self.signdesignation)
         self.cp.clickontemplatesave()
-        time.sleep(3)
-        if "Created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** template creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** template creation test is failed **********")
+        # time.sleep(3)
+        # if "Created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** template creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** template creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_templatecreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_templatecreation.png")
             assert False
         time.sleep(3)
@@ -216,13 +276,25 @@ class Test_Certification(BaseClass):
         # self.cp.scroll_to_end_of_page()
         self.cp.scrollnote()
         self.cp.clickontemplatepublish()
-        time.sleep(3)
-        if "Updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** template update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** template update test is failed **********")
+        # time.sleep(3)
+        # if "Updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** template update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** template update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_templateupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_templateupdate.png")
             assert False
         time.sleep(3)
@@ -247,13 +319,25 @@ class Test_Certification(BaseClass):
         self.cp.clickontemplateclick()
         self.cp.clickoncertificatesave()
         self.cp.clickoncertificateconfirmsave()
-        time.sleep(3)
-        if "Created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** certification creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** certification creation test is failed **********")
+        # time.sleep(3)
+        # if "Created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** certification creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** certification creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_certificationcreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_certificationcreation.png")
             assert False
         time.sleep(3)
@@ -263,75 +347,138 @@ class Test_Certification(BaseClass):
         self.cp.clickoncertificateedit()
         self.cp.clickoncertificatepublish()
         self.cp.clickoncertificateconfirmpublish()
-        time.sleep(3)
-        if "Updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** certification update test is passed *********")
-
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** certification update test is failed **********")
+        # time.sleep(3)
+        # if "Updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** certification update test is passed *********")
+        #
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** certification update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_certificateupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_certificateupdate.png")
             assert False
         time.sleep(3)
         self.cp.setsearch(certificationname)
         time.sleep(2)
-        self.driver.find_element(By.XPATH, "//span[text()='" + certificationname + "']").click()
+        # self.driver.find_element(By.XPATH, "//span[text()='" + certificationname + "']").click()
+        wait = WebDriverWait(self.driver, 10)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='" + certificationname + "']")))
+        element.click()
         self.cp.clickoncertificatedelete()
         self.cp.clickoncertificateconfirmdelete()
-        time.sleep(3)
-        if "Deleted successfully" in self.driver.page_source:
-            self.logger.info("********** certification delete test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** certification delete test is failed **********")
+        xpath = "//div[contains(text(),'Deleted successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_certificatedelete.png")
             assert False
+        # time.sleep(3)
+        # if "Deleted successfully" in self.driver.page_source:
+        #     self.logger.info("********** certification delete test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** certification delete test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_certificatedelete.png")
+        #     assert False
         time.sleep(3)
         self.cp.clickontemplates()
         self.cp.clickontemplatedelete()
         self.cp.clickoncertificateconfirmdelete()
-        time.sleep(3)
-        if "Deleted successfully" in self.driver.page_source:
-            self.logger.info("********** template delete test is passed *********")
-
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** template delete test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_templatedelete.png")
+        # time.sleep(3)
+        # if "Deleted successfully" in self.driver.page_source:
+        #     self.logger.info("********** template delete test is passed *********")
+        #
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** template delete test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_templatedelete.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Deleted successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_certificatedelete.png")
             assert False
         time.sleep(3)
         self.cp.clickonquestionbank()
         self.cp.clickonquestionedit()
         self.cp.clickonquestionbankdelete()
         self.cp.clickoncertificateconfirmdelete()
-        time.sleep(3)
-        if "Deleted successfully" in self.driver.page_source:
-            self.logger.info("********** question delete test is passed *********")
-
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** question delete test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_questiondelete.png")
+        # time.sleep(3)
+        # if "Deleted successfully" in self.driver.page_source:
+        #     self.logger.info("********** question delete test is passed *********")
+        #
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** question delete test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_questiondelete.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Deleted successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_certificatedelete.png")
             assert False
         time.sleep(3)
         self.cp.clickonmarkingsystem()
         self.cp.clickonacronymdelete()
         self.cp.clickoncertificateconfirmdelete()
-        time.sleep(3)
-        if "Acronym deleted successfully" in self.driver.page_source:
-            self.logger.info("********** Acronym delete test is passed *********")
-
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Acronym delete test is failed **********")
+        xpath = "//div[contains(text(),'Acronym deleted successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymdelete.png")
             assert False
-        time.sleep(3)
+        # time.sleep(3)
+        # if "Acronym deleted successfully" in self.driver.page_source:
+        #     self.logger.info("********** Acronym delete test is passed *********")
+        #
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Acronym delete test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymdelete.png")
+        #     assert False
+        # time.sleep(3)
 
     @pytest.mark.sanity
     @pytest.mark.regression
@@ -370,26 +517,54 @@ class Test_Certification(BaseClass):
         self.cp.setacronym2(acronym2)
 
         self.cp.clickonsave()
-        time.sleep(3)
-        if "Acronym created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** Acronym creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Acronym creation test is failed **********")
+        self.logger.info(
+            "*********** TC_01 Create the marking sysyem both published and unpublished list ***************")
+        # time.sleep(3)
+        # if "Acronym created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** Acronym creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Acronym creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymcreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Acronym created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymcreation.png")
             assert False
         time.sleep(3)
         self.cp.setsearch(acronym1)
         self.cp.clickonacronymedit()
+        self.logger.info("*********** TC_02 move the unpublish to publish. the marking System  **********")
         self.cp.clickonacronympublish()
-        time.sleep(3)
-        if "Acronym updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** Acronym update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Acronym update test is failed **********")
+        self.logger.info("************ TC_03 edit and delete the marking system ***************")
+        # time.sleep(3)
+        # if "Acronym updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** Acronym update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Acronym update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Acronym updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_acronymupdate.png")
             assert False
         time.sleep(3)
@@ -416,7 +591,19 @@ class Test_Certification(BaseClass):
             self.logger.error("************** Question creation test is failed **********")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_questioncreation.png")
             assert False
-        time.sleep(3)
+        xpath = "//div[contains(text(),'Question created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_questioncreation.png")
+            assert False
+        # time.sleep(3)
         self.cp.clickonpublishedtab()
         self.cp.clickonunpublishedtab()
         time.sleep(2)
@@ -424,16 +611,28 @@ class Test_Certification(BaseClass):
         self.cp.clickonquestionedit()
         self.cp.clickonbuttonedit()
         self.cp.clickonquestionpublish()
-        time.sleep(3)
-        if "Question update and published successfully" in self.driver.page_source:
-            self.logger.info("********** Question update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Question update test is failed **********")
+        # time.sleep(3)
+        # if "Question update and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** Question update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** Question update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_questionupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Question update and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_questionupdate.png")
             assert False
-        time.sleep(1)
+        time.sleep(3)
         self.cp.clickontemplates()
         self.cp.clickonmarkingsystemnew()
         time.sleep(1)
@@ -463,13 +662,25 @@ class Test_Certification(BaseClass):
         self.cp.setsignname(self.signname)
         self.cp.setsigndesignation(self.signdesignation)
         self.cp.clickontemplatesave()
-        time.sleep(3)
-        if "Created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** template creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** template creation test is failed **********")
+        # time.sleep(3)
+        # if "Created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** template creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** template creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_templatecreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_templatecreation.png")
             assert False
         time.sleep(3)
@@ -480,13 +691,25 @@ class Test_Certification(BaseClass):
         # self.cp.scroll_to_end_of_page()
         self.cp.scrollnote()
         self.cp.clickontemplatepublish()
-        time.sleep(3)
-        if "Updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** template update test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** template update test is failed **********")
+        # time.sleep(3)
+        # if "Updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** template update test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** template update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_templateupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_templateupdate.png")
             assert False
         time.sleep(3)
@@ -511,13 +734,25 @@ class Test_Certification(BaseClass):
         self.cp.clickontemplateclick()
         self.cp.clickoncertificatesave()
         self.cp.clickoncertificateconfirmsave()
-        time.sleep(3)
-        if "Created and unpublished successfully" in self.driver.page_source:
-            self.logger.info("********** certification creation test is passed *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** certification creation test is failed **********")
+        # time.sleep(3)
+        # if "Created and unpublished successfully" in self.driver.page_source:
+        #     self.logger.info("********** certification creation test is passed *********")
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** certification creation test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_certificationcreation.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Created and unpublished successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_certificationcreation.png")
             assert False
         time.sleep(3)
@@ -527,19 +762,28 @@ class Test_Certification(BaseClass):
         self.cp.clickoncertificateedit()
         self.cp.clickoncertificatepublish()
         self.cp.clickoncertificateconfirmpublish()
-        time.sleep(3)
-        if "Updated and published successfully" in self.driver.page_source:
-            self.logger.info("********** certification update test is passed *********")
-
-
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** certification update test is failed **********")
+        # time.sleep(3)
+        # if "Updated and published successfully" in self.driver.page_source:
+        #     self.logger.info("********** certification update test is passed *********")
+        #
+        #
+        # else:
+        #     # Log and take a screenshot
+        #     self.logger.error("************** certification update test is failed **********")
+        #     self.driver.save_screenshot(".\\Screenshots\\" + "test_certificateupdate.png")
+        #     assert False
+        xpath = "//div[contains(text(),'Updated and published successfully')]"
+        try:
+            # Use WebDriverWait to wait for the element to be present
+            element = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.XPATH, xpath))
+            )
+            self.logger.info(f"Text Found : {element.text}")
+            assert True
+        except:
+            self.logger.info(f"Text Not Found")
             self.driver.save_screenshot(".\\Screenshots\\" + "test_certificateupdate.png")
             assert False
-        time.sleep(3)
-
 
 
 
@@ -568,6 +812,7 @@ class Test_Certification(BaseClass):
         workbook.close()
 
         self.cp.setsearch(certificationname)
+
         time.sleep(3)
         if "Your certification is typically displayed as a document stating that as a professional, you've been trained, educated and are prepared to meet a specific set of criteria for your role." in self.driver.page_source:
             self.logger.info("********** Certification verification test is passed *********")

@@ -118,8 +118,11 @@ class Certification:
 
 
     def clickonpublishedtab(self):
-        time.sleep(1)
-        self.driver.find_element(By.XPATH,self.publishedtab_xpath).click()
+        # time.sleep(1)
+        # self.driver.find_element(By.XPATH,self.publishedtab_xpath).click()
+        wait = WebDriverWait(self.driver, 10)  # Adjust the timeout as needed
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.publishedtab_xpath)))
+        element.click()
 
     def clickonunpublishedtab(self):
         time.sleep(1)
@@ -165,7 +168,7 @@ class Certification:
 
 
     def setsearch(self,search):
-        # time.sleep(2)
+        time.sleep(2)
         WebDriverWait(self.driver,10).until(
             EC.element_to_be_clickable((By.XPATH,self.search_xpath))
         )
@@ -342,11 +345,14 @@ class Certification:
         publish_button.click()
 
     def clickontemplates(self):
-        element = WebDriverWait(self.driver,20).until(
-            EC.element_to_be_clickable((By.XPATH,self.templates_xpath))
-        )
-
+        wait = WebDriverWait(self.driver, 10)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.templates_xpath)))
         element.click()
+        # element = WebDriverWait(self.driver,20).until(
+        #     EC.element_to_be_clickable((By.XPATH,self.templates_xpath))
+        # )
+        #
+        # element.click()
 
     def clickontemplateedit(self):
         # element = WebDriverWait(self.driver, 20).until(
@@ -375,8 +381,12 @@ class Certification:
         self.driver.find_element(By.XPATH,self.logoimg_xpath).send_keys(absolutepath_5)
 
     def clickonimgsave(self):
-        time.sleep(1)
-        self.driver.find_element(By.XPATH,self.imgsave_xpath).click()
+        # time.sleep(1)
+        # self.driver.find_element(By.XPATH,self.imgsave_xpath).click()
+        # time.sleep(1)
+        wait = WebDriverWait(self.driver, 10)
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, self.imgsave_xpath)))
+        element.click()
         time.sleep(1)
 
     def setprogramname(self,programname):

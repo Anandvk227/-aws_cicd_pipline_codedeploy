@@ -84,7 +84,12 @@ class AddEmployeesPage:
         # self.driver.find_element(By.XPATH, self.DD_CountryDD_xpath).click()
 
     def clickActive(self):
-        self.driver.find_element(By.XPATH, self.button_Active_xpath).click()
+        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.button_Active_xpath))
+        )
+        element.click()
+        # self.driver.find_element(By.XPATH, self.button_Active_xpath).click()
 
     def clickNewButton(self):
         self.driver.find_element(By.XPATH, self.button_New_xpath).click()
