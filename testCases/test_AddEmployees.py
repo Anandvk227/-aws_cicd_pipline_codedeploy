@@ -1,6 +1,5 @@
 import time
 import unittest
-
 import pytest
 from openpyxl.reader.excel import load_workbook
 from selenium import webdriver
@@ -16,7 +15,7 @@ from pageObjects.randomGen import randomGen
 from pageObjects.companySignUpPage import companySignUpPage
 from GenericLib.BaseClass import BaseClass
 
-class addEmployees(BaseClass):
+class TestaddEmployees():
     baseURL = ReadConfig.getApplicationURL()
     DeptName = "Emp creation QA"
     DeptDescription = "Emp creation Software Testing"
@@ -37,9 +36,11 @@ class addEmployees(BaseClass):
     @pytest.mark.run(order=11)
     # @pytest.mark.test
     @pytest.mark.regression
-
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
-    def test_createEmployee_superAdmin(self):
+    def test_createEmployee_superAdmin(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****TC_01	Create New Employee in Super Admin and Admin Account  ****")
         first_name2 = randomGen.random_first_name()
         email = randomGen.random_email()
@@ -63,129 +64,131 @@ class addEmployees(BaseClass):
         # Save the workbook
         wb.save("TestData/LoginData.xlsx")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickNewsFeed()
-        self.aep = AddEmployeesPage(self.driver)
-        self.aep.clickEmployeesModule()
-        self.aep.clickActive()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        lp.clickNewsFeed()
+        aep = AddEmployeesPage(driver)
+        aep.clickEmployeesModule()
+        aep.clickActive()
         time.sleep(3)
-        self.aep.clickNewButton()
-        self.aep.setFullname(first_name2)
+        aep.clickNewButton()
+        aep.setFullname(first_name2)
 
-        self.aep.setEmail("emp" + email)
-        self.aep.setPersonalEmail("personal" + email)
+        aep.setEmail("emp" + email)
+        aep.setPersonalEmail("personal" + email)
 
-        self.aep.setPhoneNumber(phone_number)
+        aep.setPhoneNumber(phone_number)
 
-        self.aep.setEmpId(Emp_Id)
+        aep.setEmpId(Emp_Id)
         self.logger.info("**** TC_02  Started Create  New Department in Super Admin Account****")
-        self.aep.clickAddDeptButton()
-        self.cp = ConfigurationPage(self.driver)
-        self.cp.setDepartmentName("Department " + first_name2)
-        self.cp.setEnterDescription(self.DeptDescription)
-        self.aep.clickDoneAddDept()
+        aep.clickAddDeptButton()
+        cp = ConfigurationPage(driver)
+        cp.setDepartmentName("Department " + first_name2)
+        cp.setEnterDescription(self.DeptDescription)
+        aep.clickDoneAddDept()
         # time.sleep(3)
-        xpath = self.cp.verify_DeptCreatedSuccessful_xpath
+        xpath = cp.verify_DeptCreatedSuccessful_xpath
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found company name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"company name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
+            driver.close()
+            driver.quit()
             assert False
 
         self.logger.info("****TC_03  Started Create  New Division in Super Admin Account****")
-        self.aep.clickAddDivisionButton()
-        self.aep.setDivisionName("Division " + first_name2)
-        self.cp.setEnterDescription(self.DeptDescription)
-        self.aep.clickDoneAddDept()
+        aep.clickAddDivisionButton()
+        aep.setDivisionName("Division " + first_name2)
+        cp.setEnterDescription(self.DeptDescription)
+        aep.clickDoneAddDept()
         # time.sleep(3)
-        xpath = self.cp.verify_DivisionCreatedSuccessful_xpath
+        xpath = cp.verify_DivisionCreatedSuccessful_xpath
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found company name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"company name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
+            driver.close()
+            driver.quit()
             assert False
 
         self.logger.info("****TC_04  Started Create  New Designation in Super Admin Account****")
-        self.aep.clickAddDesignation()
-        self.aep.setDivisionName("Designation " + first_name2)
-        self.cp.setEnterDescription(self.DeptDescription)
-        self.aep.clickDoneAddDept()
+        aep.clickAddDesignation()
+        aep.setDivisionName("Designation " + first_name2)
+        cp.setEnterDescription(self.DeptDescription)
+        aep.clickDoneAddDept()
         # time.sleep(3)
 
-        xpath = self.cp.verify_DesignationCreatedSuccessful_xpath
+        xpath = cp.verify_DesignationCreatedSuccessful_xpath
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
+            driver.close()
+            driver.quit()
             assert False
 
         # time.sleep(2)
-        self.aep.clickCountryDD()
+        aep.clickCountryDD()
         # time.sleep(3)
-        self.sp = companySignUpPage(self.driver)
-        self.sp.clickindia()
-        self.sp.clickstatedd()
-        self.sp.clickTelangana()
-        self.sp.clickcitydd()
-        self.sp.clickHyderabad()
+        sp = companySignUpPage(driver)
+        sp.clickindia()
+        sp.clickstatedd()
+        sp.clickTelangana()
+        sp.clickcitydd()
+        sp.clickHyderabad()
         time.sleep(2)
-        self.aep.clickAddButton()
+        aep.clickAddButton()
 
         xpath = "//div[contains(text(), 'Employee created successfully')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found company name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"company name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_createEmployee_superAdmin.png")
+            driver.close()
+            driver.quit()
             assert False
-
 
     @pytest.mark.run(order=12)
     @pytest.mark.flaky(rerun=3, rerun_delay=3)
     @pytest.mark.regression
-    def test_Employee_StatusAndRole(self):
+    def test_Employee_StatusAndRole(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Create New Employee in Super Admin and Admin Account ****")
         first_name = randomGen.random_first_name()
         email = randomGen.random_email()
@@ -209,72 +212,72 @@ class addEmployees(BaseClass):
         # Save the workbook
         wb.save("TestData/LoginData.xlsx")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickNewsFeed()
-        self.aep = AddEmployeesPage(self.driver)
-        self.aep.clickEmployeesModule()
-        self.aep.clickActive()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        lp.clickNewsFeed()
+        aep = AddEmployeesPage(driver)
+        aep.clickEmployeesModule()
+        aep.clickActive()
         time.sleep(3)
-        self.aep.clickNewButton()
-        self.aep.setFullname(first_name)
+        aep.clickNewButton()
+        aep.setFullname(first_name)
 
-        self.aep.setEmail("emp" + email)
-        self.aep.setPersonalEmail("personal" + email)
+        aep.setEmail("emp" + email)
+        aep.setPersonalEmail("personal" + email)
 
-        self.aep.setPhoneNumber(phone_number)
+        aep.setPhoneNumber(phone_number)
 
-        self.aep.setEmpId(Emp_Id)
+        aep.setEmpId(Emp_Id)
         # time.sleep(2)
-        self.aep.ClickDD_Dept()
-        self.aep.perform_keyboard_actions()
-        self.aep.ClickDD_Division()
-        self.aep.perform_keyboard_actions()
-        self.aep.ClickDD_Designation()
-        self.aep.perform_keyboard_actions()
+        aep.ClickDD_Dept()
+        aep.perform_keyboard_actions()
+        aep.ClickDD_Division()
+        aep.perform_keyboard_actions()
+        aep.ClickDD_Designation()
+        aep.perform_keyboard_actions()
         # time.sleep(2)
-        self.aep.clickCountryDD()
+        aep.clickCountryDD()
         # time.sleep(3)
-        self.sp = companySignUpPage(self.driver)
-        self.sp.clickindia()
-        self.sp.clickstatedd()
-        self.sp.clickTelangana()
-        self.sp.clickcitydd()
-        self.sp.clickHyderabad()
+        sp = companySignUpPage(driver)
+        sp.clickindia()
+        sp.clickstatedd()
+        sp.clickTelangana()
+        sp.clickcitydd()
+        sp.clickHyderabad()
         time.sleep(1)
-        self.aep.clickAddButton()
+        aep.clickAddButton()
         # time.sleep(3)
 
         xpath = "//div[contains(text(), 'Employee created successfully')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.close()
+            driver.quit()
             assert False
 
         wb = load_workbook("TestData/LoginData.xlsx")
         ws = wb.active
         first_name = ws['A11'].value
         self.logger.info("****TC_09	Employee approve*****")
-        self.aep.clickActive()
+        aep.clickActive()
         # time.sleep(2)
-        self.aep.setActiveSearchField(first_name)
+        aep.setActiveSearchField(first_name)
 
         first_name_xpath = "//span[contains(text(),'" + first_name + "')]"
 
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, first_name_xpath))
         )
         # element.click()
@@ -282,21 +285,21 @@ class addEmployees(BaseClass):
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
-            self.driver.close()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.close()
             assert False
 
         element.click()
-        self.aep.ClickEmployeeStatus()
-        self.aep.ClickAdminStatus()
-        self.logger.info("****TC_06	Check Employee is getting admin access******" )
-        self.aep.ClickGrantAdmin()
+        aep.ClickEmployeeStatus()
+        aep.ClickAdminStatus()
+        self.logger.info("****TC_06	Check Employee is getting admin access******")
+        aep.ClickGrantAdmin()
         xpath = "//div[contains(text(), '" + first_name + " is an admin now')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
         # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
@@ -304,20 +307,20 @@ class addEmployees(BaseClass):
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.close()
+            driver.quit()
             assert False
-        self.aep.ClickAdminStatus()
-        self.aep.ClickEmployeesStatus()
+        aep.ClickAdminStatus()
+        aep.ClickEmployeesStatus()
         self.logger.info("********TC_07	Check if we Remove admin access for Employee ***********")
-        self.aep.ClickRemoveStatus()
+        aep.ClickRemoveStatus()
         xpath = "//div[contains(text(), '" + first_name + " is removed as admin')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
         # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
@@ -325,23 +328,23 @@ class addEmployees(BaseClass):
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.close()
+            driver.quit()
             assert False
 
-        self.aep.ClickbuttonActive()
+        aep.ClickbuttonActive()
         self.logger.info("******TC_14	Verify De-active employee******")
-        self.aep.ClickbuttonDeactivate()
-        self.aep.setreasonText("deleting to test the functionality")
-        self.aep.ClickconfDeactivate()
+        aep.ClickbuttonDeactivate()
+        aep.setreasonText("deleting to test the functionality")
+        aep.ClickconfDeactivate()
 
         xpath = "//div[contains(text(),'Employee deactivated successfully')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
         # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
@@ -349,29 +352,32 @@ class addEmployees(BaseClass):
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.close()
+            driver.quit()
             assert False
         time.sleep(1)
-        self.aep.setActiveSearchField(first_name)
+        aep.setActiveSearchField(first_name)
 
-        if "No search results found" in self.driver.page_source:
+        if "No search results found" in driver.page_source:
             self.logger.info("********** Acronym creation test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Acronym creation test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAndRole.png")
             assert False
 
     @pytest.mark.run(order=13)
-    @pytest.mark.test
+    # @pytest.mark.test
     @pytest.mark.regression
-    def test_Employee_StatusAdminRole(self):
+    def test_Employee_StatusAdminRole(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****TC_06	Check Employee is getting admin access ****")
         first_name = randomGen.random_first_name()
         email = randomGen.random_email()
@@ -395,107 +401,96 @@ class addEmployees(BaseClass):
         # Save the workbook
         wb.save("TestData/LoginData.xlsx")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickNewsFeed()
-        self.aep = AddEmployeesPage(self.driver)
-        self.aep.clickEmployeesModule()
-        self.aep.clickActive()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        lp.clickNewsFeed()
+        aep = AddEmployeesPage(driver)
+        aep.clickEmployeesModule()
+        aep.clickActive()
         time.sleep(2)
-        self.aep.clickNewButton()
-        self.aep.setFullname(first_name)
+        aep.clickNewButton()
+        aep.setFullname(first_name)
 
-        self.aep.setEmail("emp" + email)
-        self.aep.setPersonalEmail("personal" + email)
+        aep.setEmail("emp" + email)
+        aep.setPersonalEmail("personal" + email)
 
-        self.aep.setPhoneNumber(phone_number)
+        aep.setPhoneNumber(phone_number)
 
-        self.aep.setEmpId(Emp_Id)
+        aep.setEmpId(Emp_Id)
         time.sleep(2)
-        self.aep.ClickDD_Dept()
-        self.aep.perform_keyboard_actions()
-        self.aep.ClickDD_Division()
-        self.aep.perform_keyboard_actions()
-        self.aep.ClickDD_Designation()
-        self.aep.perform_keyboard_actions()
-        # time.sleep(2)
-        self.aep.clickCountryDD()
-        # time.sleep(3)
-        self.sp = companySignUpPage(self.driver)
-        self.sp.clickindia()
-        self.sp.clickstatedd()
-        self.sp.clickTelangana()
-        self.sp.clickcitydd()
-        self.sp.clickHyderabad()
+        aep.ClickDD_Dept()
+        aep.perform_keyboard_actions()
+        aep.ClickDD_Division()
+        aep.perform_keyboard_actions()
+        aep.ClickDD_Designation()
+        aep.perform_keyboard_actions()
+        aep.clickCountryDD()
+
+        sp = companySignUpPage(driver)
+        sp.clickindia()
+        sp.clickstatedd()
+        sp.clickTelangana()
+        sp.clickcitydd()
+        sp.clickHyderabad()
         time.sleep(1)
-        self.aep.clickAddButton()
-        # time.sleep(3)
+        aep.clickAddButton()
 
         xpath = "//div[contains(text(), 'Employee created successfully')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
+            driver.quit()
             assert False
 
         wb = load_workbook("TestData/LoginData.xlsx")
         ws = wb.active
         first_name = ws['A11'].value
-        self.aep.clickActive()
-        # time.sleep(2)
-        self.aep.setActiveSearchField(first_name)
+        aep.clickActive()
+        aep.setActiveSearchField(first_name)
 
         xpath = "//span[contains(text(),'" + first_name + "')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
+            driver.quit()
             assert False
 
         element.click()
-        self.aep.ClickEmployeeStatus()
-        self.aep.ClickAdminStatus()
-        self.aep.ClickGrantAdmin()
+        aep.ClickEmployeeStatus()
+        aep.ClickAdminStatus()
+        aep.ClickGrantAdmin()
         xpath = "//div[contains(text(), '" + first_name + " is an admin now')]"
         # Use WebDriverWait to wait for the element to be present
-        element = WebDriverWait(self.driver, 10).until(
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
-        # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
-            self.driver.close()
-            self.driver.quit()
+            driver.save_screenshot(".\\Screenshots\\" + "test_Employee_StatusAdminRole.png")
+            driver.quit()
             assert False
-
 
     if __name__ == '__main__':
         unittest.main(verbosity=2)

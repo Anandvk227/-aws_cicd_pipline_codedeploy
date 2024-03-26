@@ -143,8 +143,12 @@ class Resources:
         self.driver.find_element(By.XPATH,self.contentclose_xpath).click()
 
     def clickonvideosbutton(self):
-        time.sleep(1)
-        self.driver.find_element(By.XPATH,self.videosbutton_xpath).click()
+        # time.sleep(1)
+        # self.driver.find_element(By.XPATH,self.videosbutton_xpath).click()
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.videosbutton_xpath))
+        )
+        element.click()
 
     def clickonvideoselect(self):
         time.sleep(1)
@@ -155,7 +159,11 @@ class Resources:
 
         # Perform the scrolling action
         actions.perform()
-
+        # element = WebDriverWait(self.driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, self.videoselect_xpath))
+        # )
+        # element.click()
+        time.sleep(1)
         self.driver.find_element(By.XPATH,self.videoselect_xpath).click()
         time.sleep(1)
 
@@ -533,12 +541,11 @@ class Resources:
         time.sleep(1)
 
     def clickonsubcategorydelete(self):
-        WebDriverWait(self.driver,20).until(
-            EC.element_to_be_clickable((By.XPATH,self.subcategorydelete_xpath))
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.subcategorydelete_xpath))
         )
-        self.driver.find_element(By.XPATH,self.subcategorydelete_xpath).click()
+        element.click()
         time.sleep(1)
-
 
 
 

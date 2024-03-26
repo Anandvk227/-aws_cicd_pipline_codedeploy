@@ -11,7 +11,7 @@ from Anand_PageObjects.RecognitionPage import Recognitions
 from GenericLib.BaseClass import BaseClass
 
 
-class Test_Create_Recognition(BaseClass):
+class Test_Create_Recognition():
     baseURL = ReadConfig.getApplicationURL()
 
     addemployee="Anand"
@@ -36,509 +36,520 @@ class Test_Create_Recognition(BaseClass):
     @pytest.mark.regression
     @pytest.mark.run(order=81)
     # @pytest.mark.skip(reason="skipping this Test")
-    def test_CreateRecognition_Verify_Employee_got_Recognition(self):
+    def test_CreateRecognition_Verify_Employee_got_Recognition(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(3)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
-        if "Recognition" in self.driver.page_source:
-            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
+        if "Recognition" in driver.page_source:
+            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.clicknewrecognition()
+
+        rcp.clicknewrecognition()
         time.sleep(2)
-        self.rcp.selecttemplate()
-        self.rcp.selectbadge()
-        self.rcp.clicknext()
-        self.rcp.setaddemployee(self.addemployee)
-        self.rcp.clickemployee()
-        self.rcp.setaddtitle(self.addtitle)
-        self.rcp.setadddescription(self.adddescription)
-        self.rcp.clickonpreview()
-        self.rcp.clickpublish()
+        rcp.selecttemplate()
+        rcp.selectbadge()
+        rcp.clicknext()
+        rcp.setaddemployee(self.addemployee)
+        rcp.clickemployee()
+        rcp.setaddtitle(self.addtitle)
+        rcp.setadddescription(self.adddescription)
+        rcp.clickonpreview()
+        rcp.clickpublish()
         time.sleep(2)
-        if "Employee recognition has been successfully published" in self.driver.page_source:
+        if "Employee recognition has been successfully published" in driver.page_source:
             self.logger.info("********** Employee recognition published test is passed *********")
             self.logger.info("********** content creation test is passed *********")
-            print(self,'--self')
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition published test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition.png")
             assert False
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        time.sleep(4)
-        if "Congratulations" in self.driver.page_source:
-            self.logger.info("********** Employee recognition verification test is passed *********")
 
+        lp.clickLogout()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        time.sleep(4)
+        if "Congratulations" in driver.page_source:
+            self.logger.info("********** Employee recognition verification test is passed *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition.png")
             assert False
-        self.rcp.closepopup()
-        self.lp.clickLogout()
 
+        rcp.closepopup()
+        lp.clickLogout()
 
     @pytest.mark.regression
     @pytest.mark.run(order=82)
     # @pytest.mark.skip(reason="skipping this Test")
     # @pytest.mark.skip(reason="skipping this Test")
-    def test_UnpublishedRecognition_and_Verify_in_Employee_account(self):
+    def test_UnpublishedRecognition_and_Verify_in_Employee_account(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
-        if "Recognition" in self.driver.page_source:
-            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
+        if "Recognition" in driver.page_source:
+            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.clicknewrecognition()
-        time.sleep(2)
-        self.rcp.selecttemplate()
-        self.rcp.selectbadge()
-        self.rcp.clicknext()
-        time.sleep(2)
-        self.rcp.setaddemployee(self.addemployee)
-        self.rcp.clickemployee()
-        self.rcp.setaddtitle(self.addtitle)
-        self.rcp.setadddescription(self.adddescription)
-        time.sleep(1)
-        self.rcp.clickonpreview()
-        time.sleep(1)
-        self.rcp.savetemplate()
-        time.sleep(2)
-        if "Employee recognition has been saved in unpublished" in self.driver.page_source:
-            self.logger.info("********** Employee recognition unpublished test is passed *********")
 
+        rcp.clicknewrecognition()
+        time.sleep(2)
+        rcp.selecttemplate()
+        rcp.selectbadge()
+        rcp.clicknext()
+        time.sleep(2)
+        rcp.setaddemployee(self.addemployee)
+        rcp.clickemployee()
+        rcp.setaddtitle(self.addtitle)
+        rcp.setadddescription(self.adddescription)
+        time.sleep(1)
+        rcp.clickonpreview()
+        time.sleep(1)
+        rcp.savetemplate()
+        time.sleep(2)
+        if "Employee recognition has been saved in unpublished" in driver.page_source:
+            self.logger.info("********** Employee recognition unpublished test is passed *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition unpublished test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedRecognition_and_Verify_in_Employee_account.png")
+            driver.save_screenshot(
+                ".\\Screenshots\\" + "test_UnpublishedRecognition_and_Verify_in_Employee_account.png")
             assert False
-        time.sleep(1)
 
-        if "Anand" in self.driver.page_source:
+        time.sleep(1)
+        if "Anand" in driver.page_source:
             self.logger.info("********** Employee verification test is passed *********")
             self.logger.info("********** content creation test is passed *********")
-
         else:
-        # Log and take a screenshot
+            # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedRecognition_and_Verify_in_Employee_account.png")
+            driver.save_screenshot(
+                ".\\Screenshots\\" + "test_UnpublishedRecognition_and_Verify_in_Employee_account.png")
             assert False
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        time.sleep(2)
-        if "News Feed" in self.driver.page_source:
-            self.logger.info("********** Employee Login successfully *********")
 
+        lp.clickLogout()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        time.sleep(2)
+        if "News Feed" in driver.page_source:
+            self.logger.info("********** Employee Login successfully *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
             assert False
-        self.lp.clickLogout()
 
+        lp.clickLogout()
 
     @pytest.mark.regression
     @pytest.mark.run(order=83)
     # @pytest.mark.skip(reason="skipping this Test")
     # @pytest.mark.anand
-    def test_UnpublishedtoPunlishRecognition(self):
+    def test_UnpublishedtoPunlishRecognition(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
-        if "Recognition" in self.driver.page_source:
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
+        if "Recognition" in driver.page_source:
             self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.clicknewrecognition()
+        rcp.clicknewrecognition()
         time.sleep(2)
-        self.rcp.selecttemplate()
-        self.rcp.selectbadge()
-        self.rcp.clicknext()
+        rcp.selecttemplate()
+        rcp.selectbadge()
+        rcp.clicknext()
         time.sleep(2)
-        self.rcp.setaddemployee(self.addemployee)
-        self.rcp.clickemployee()
-        self.rcp.setaddtitle(self.addtitle)
-        self.rcp.setadddescription(self.adddescription)
+        rcp.setaddemployee(self.addemployee)
+        rcp.clickemployee()
+        rcp.setaddtitle(self.addtitle)
+        rcp.setadddescription(self.adddescription)
         time.sleep(1)
-        self.rcp.clickonpreview()
+        rcp.clickonpreview()
         time.sleep(1)
-        self.rcp.savetemplate()
+        rcp.savetemplate()
         time.sleep(2)
-        if "Employee recognition has been saved in unpublished" in self.driver.page_source:
+        if "Employee recognition has been saved in unpublished" in driver.page_source:
             self.logger.info("********** Employee recognition unpublished test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition unpublished test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
             assert False
         time.sleep(1)
 
-        if "Anand" in self.driver.page_source:
+        if "Anand" in driver.page_source:
             self.logger.info("********** Employee verification test is passed *********")
             self.logger.info("********** content creation test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
             assert False
         time.sleep(1)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(2)
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(3)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** Employee Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
             assert False
 
         time.sleep(2)
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.clickLogout()
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
         time.sleep(2)
-        if "Recognition" in self.driver.page_source:
+        if "Recognition" in driver.page_source:
             self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.unpublishedtab()
+        rcp.unpublishedtab()
         time.sleep(2)
-        self.rcp.clickonthreedots()
+        rcp.clickonthreedots()
         time.sleep(1)
-        self.rcp.clickonpublish()
-        self.rcp.publishconfirm()
+        rcp.clickonpublish()
+        rcp.publishconfirm()
         time.sleep(2)
-        if "Employee Recognition has been published successfully" in self.driver.page_source:
+        if "Employee Recognition has been published successfully" in driver.page_source:
             self.logger.info("********** Employee recognition published test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition published test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
             assert False
         time.sleep(3)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(2)
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "Congratulations" in self.driver.page_source:
+        if "Congratulations" in driver.page_source:
             self.logger.info("********** Employee verification test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_UnpublishedtoPublishRecognition.png")
             assert False
         time.sleep(2)
-        self.rcp.closepopup()
+        rcp.closepopup()
         time.sleep(1)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(2)
-
 
     @pytest.mark.regression
     @pytest.mark.run(order=84)
     # @pytest.mark.skip(reason="skipping this Test")
     # @pytest.mark.skip(reason="skipping this Test")
     # @pytest.mark.pspk
-    def test_EditRecognition(self):
+    def test_EditRecognition(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
-        if "Recognition" in self.driver.page_source:
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
+        if "Recognition" in driver.page_source:
             self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.clicknewrecognition()
+        rcp.clicknewrecognition()
         time.sleep(2)
-        self.rcp.selecttemplate()
-        self.rcp.selectbadge()
-        self.rcp.clicknext()
+        rcp.selecttemplate()
+        rcp.selectbadge()
+        rcp.clicknext()
         time.sleep(2)
-        self.rcp.setaddemployee(self.addemployee)
-        self.rcp.clickemployee()
-        self.rcp.setaddtitle(self.addtitle)
-        self.rcp.setadddescription(self.adddescription)
+        rcp.setaddemployee(self.addemployee)
+        rcp.clickemployee()
+        rcp.setaddtitle(self.addtitle)
+        rcp.setadddescription(self.adddescription)
         time.sleep(1)
-        self.rcp.clickonpreview()
+        rcp.clickonpreview()
         time.sleep(1)
-        self.rcp.savetemplate()
+        rcp.savetemplate()
         time.sleep(2)
-        if "Employee recognition has been saved in unpublished" in self.driver.page_source:
+        if "Employee recognition has been saved in unpublished" in driver.page_source:
             self.logger.info("********** Employee recognition unpublished test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition unpublished test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
             assert False
         time.sleep(2)
 
-        if "Anand" in self.driver.page_source:
+        if "Anand" in driver.page_source:
             self.logger.info("********** Employee verification test is passed *********")
             self.logger.info("********** content creation test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
             assert False
         time.sleep(3)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(2)
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(3)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** Employee Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "Employee_login_fail.png")
             assert False
 
         time.sleep(2)
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.clickLogout()
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(1)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
         time.sleep(2)
-        if "Recognition" in self.driver.page_source:
+        if "Recognition" in driver.page_source:
             self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.unpublishedtab()
+        rcp.unpublishedtab()
         time.sleep(2)
-        self.rcp.clickonthreedots()
+        rcp.clickonthreedots()
         time.sleep(1)
-        self.rcp.clickonedit()
+        rcp.clickonedit()
         time.sleep(1)
-        self.rcp.clcikonback()
+        rcp.clcikonback()
         time.sleep(1)
-        self.rcp.selecttemplatetwo()
-        self.rcp.selectbannertwo()
+        rcp.selecttemplatetwo()
+        rcp.selectbannertwo()
         time.sleep(1)
-        self.rcp.clicknext()
+        rcp.clicknext()
         time.sleep(1)
-        self.rcp.clickonpreview()
+        rcp.clickonpreview()
         time.sleep(1)
-        self.rcp.clickpublish()
+        rcp.clickpublish()
         time.sleep(2)
-        if "Employee recognition has been successfully published" in self.driver.page_source:
+        if "Employee recognition has been successfully published" in driver.page_source:
             self.logger.info("********** Employee recognition published test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition published test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
             assert False
         time.sleep(3)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(2)
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "Congratulations" in self.driver.page_source:
+        if "Congratulations" in driver.page_source:
             self.logger.info("********** Employee verification test is passed *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_EditRecognition.png")
             assert False
         time.sleep(3)
-        self.rcp.closepopup()
+        rcp.closepopup()
         time.sleep(3)
-        self.lp.clickLogout()
-
+        lp.clickLogout()
 
     @pytest.mark.regression
     @pytest.mark.run(order=85)
     # @pytest.mark.skip(reason="skipping this Test")
-    def test_CreateRecognition_Verify_Employee_got_Recognition_download_Recognition(self):
+    def test_CreateRecognition_Verify_Employee_got_Recognition_download_Recognition(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         time.sleep(4)
-        if "News Feed" in self.driver.page_source:
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
-        self.rcp = Recognitions(self.driver)
-        self.rcp.clickrecognition()
-        if "Recognition" in self.driver.page_source:
-            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
 
+        rcp = Recognitions(driver)
+        rcp.clickrecognition()
+        if "Recognition" in driver.page_source:
+            self.logger.info("********** Recognition tab Open successfully and Published Recognitions open *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Recognition tab Open failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "recognitiontab_open_fail.png")
             assert False
-        self.rcp.clicknewrecognition()
-        self.rcp.selecttemplate()
-        self.rcp.selectbadge()
-        self.rcp.clicknext()
-        self.rcp.setaddemployee(self.addemployee)
-        self.rcp.clickemployee()
-        self.rcp.setaddtitle(self.addtitle)
-        self.rcp.setadddescription(self.adddescription)
-        self.rcp.clickonpreview()
-        self.rcp.clickpublish()
-        time.sleep(2)
-        if "Employee recognition has been successfully published" in self.driver.page_source:
-            self.logger.info("********** Employee recognition has been successfully published *********")
-            print(self, '--self')
 
+        rcp.clicknewrecognition()
+        rcp.selecttemplate()
+        rcp.selectbadge()
+        rcp.clicknext()
+        rcp.setaddemployee(self.addemployee)
+        rcp.clickemployee()
+        rcp.setaddtitle(self.addtitle)
+        rcp.setadddescription(self.adddescription)
+        rcp.clickonpreview()
+        rcp.clickpublish()
+        time.sleep(2)
+        if "Employee recognition has been successfully published" in driver.page_source:
+            self.logger.info("********** Employee recognition has been successfully published *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee recognition Created fail **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "employee_recognition.png")
+            driver.save_screenshot(".\\Screenshots\\" + "employee_recognition.png")
             assert False
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        time.sleep(4)
-        if "Congratulations" in self.driver.page_source:
-            self.logger.info("********** Employee verification test is passed *********")
 
+        lp.clickLogout()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        time.sleep(4)
+        if "Congratulations" in driver.page_source:
+            self.logger.info("********** Employee verification test is passed *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Employee verification test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition_download_Recognition.png")
+            driver.save_screenshot(
+                ".\\Screenshots\\" + "test_CreateRecognition_Verify_Employee_got_Recognition_download_Recognition.png")
             assert False
-        self.rcp.closepopup()
-        self.rcp.clickmyprofiletab()
+
+        rcp.closepopup()
+        rcp.clickmyprofiletab()
         time.sleep(1)
-        self.rcp.clickmyrecognition()
-        self.rcp.clickbackrecog()
-        self.rcp.clickdownloadrecog()
-        self.rcp.selectdownloadtype()
+        rcp.clickmyrecognition()
+        rcp.clickbackrecog()
+        rcp.clickdownloadrecog()
+        rcp.selectdownloadtype()
         time.sleep(6)
 
     if __name__ == '__main__':

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="afc4c8a0-00e7-48ac-8d8d-410cfcb5e530" name="Changes" comment="Test">
+      <change afterPath="$PROJECT_DIR$/testCases/test_suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/InLynk.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Reports/assets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Reports/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anand_TestCases/test_DealRegistrations.py" beforeDir="false" afterPath="$PROJECT_DIR$/Anand_TestCases/test_DealRegistrations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anand_TestCases/test_Recognitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Anand_TestCases/test_Recognitions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/assets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/reports.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SunithaTestCase/test_CompanyProfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/SunithaTestCase/test_CompanyProfile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SunithaTestCase/test_Webinar.py" beforeDir="false" afterPath="$PROJECT_DIR$/SunithaTestCase/test_Webinar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SunithaTestCase/test_profilePage.py" beforeDir="false" afterPath="$PROJECT_DIR$/SunithaTestCase/test_profilePage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestData/LoginData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/LoginData.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/krishnapageObjects/ResourcesPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnapageObjects/ResourcesPage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/krishnatestCases/test_certification.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/test_certification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/krishnatestCases/test_newsfeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/test_newsfeed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/krishnatestCases/test_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/test_resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sunithaPageObjects/CompanyProfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/sunithaPageObjects/CompanyProfile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_AddEmployees.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_AddEmployees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_EmployeeSignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_EmployeeSignUp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_MediaDrive.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_MediaDrive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_Order.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_Order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_companySignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_companySignUp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_forgotPassword.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_forgotPassword.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_networks.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/testCases/conftest.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testCases/test_MediaDrive.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2bOLp7ZW0EcYiqnJfsEzGwpvqZU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sohel&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1042/PycharmProjects/AutomationFramework/venv/Scripts/python.exe&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\1042\PycharmProjects\AutomationFramework\TestData" />
+      <recent name="C:\Users\1042\PycharmProjects\AutomationFramework\sunithaPageObjects" />
+      <recent name="C:\Users\1042\PycharmProjects\AutomationFramework\SunithaTestCase" />
+      <recent name="C:\Users\1042\PycharmProjects\AutomationFramework\Anand_TestCases" />
+      <recent name="C:\Users\1042\PycharmProjects\AutomationFramework\testCases" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for BaseClass.BaseClass">
+    <configuration name="Python tests for BaseClass.BaseClass" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="InLynk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GenericLib" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;BaseClass.BaseClass&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_CompanyProfile.Test_001_Login.test_ClickingElements" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="InLynk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SunithaTestCase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_CompanyProfile.Test_001_Login.test_ClickingElements&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_MediaDrive.TestMediaDrive.test_MediaDrive" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="InLynk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testCases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_MediaDrive.TestMediaDrive.test_MediaDrive&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_newsfeed.Test_001_NewsFeed.test_newsfeedforemployees" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="InLynk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/krishnatestCases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_newsfeed.Test_001_NewsFeed.test_newsfeedforemployees&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_newsfeed.Test_001_NewsFeed.test_newsfeedwithimage" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="InLynk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/krishnatestCases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_newsfeed.Test_001_NewsFeed.test_newsfeedwithimage&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for BaseClass.BaseClass" />
+        <item itemvalue="Python tests.Python tests for test_CompanyProfile.Test_001_Login.test_ClickingElements" />
+        <item itemvalue="Python tests.Python tests for test_MediaDrive.TestMediaDrive.test_MediaDrive" />
+        <item itemvalue="Python tests.Python tests for test_newsfeed.Test_001_NewsFeed.test_newsfeedwithimage" />
+        <item itemvalue="Python tests.Python tests for test_newsfeed.Test_001_NewsFeed.test_newsfeedforemployees" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afc4c8a0-00e7-48ac-8d8d-410cfcb5e530" name="Changes" comment="" />
+      <created>1706081363196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706081363196</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GenericLib/BaseClass.py</url>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/testCases/test_companySignUp.py</url>
+          <line>254</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

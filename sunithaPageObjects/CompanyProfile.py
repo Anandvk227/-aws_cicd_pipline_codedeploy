@@ -391,7 +391,7 @@ class LoginPage:
 
     def AwardsEdit(self):
         time.sleep(1)
-        wait = WebDriverWait(self.driver, 5)
+        wait = WebDriverWait(self.driver, 10)
         element = wait.until(EC.presence_of_element_located((By.XPATH, self.Awards_button_xpath)))
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'start', inline: 'nearest'});", element)
         actions = ActionChains(self.driver)

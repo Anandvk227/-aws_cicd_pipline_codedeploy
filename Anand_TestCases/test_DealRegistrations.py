@@ -15,7 +15,7 @@ from GenericLib.BaseClass import BaseClass
 
 
 
-class Test_Create_DealwithNetworkCompany(BaseClass):
+class Test_Create_DealwithNetworkCompany():
     baseURL = ReadConfig.getApplicationURL()
     workbook = load_workbook("TestData/LoginData.xlsx")
     deptname = randomGen.random_first_name()
@@ -67,132 +67,130 @@ class Test_Create_DealwithNetworkCompany(BaseClass):
     logger=LogGen.loggen()
 
     @pytest.mark.regression
-    @pytest.mark.ana
+    @pytest.mark.test
     @pytest.mark.run(order=75)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
     # @pytest.mark.skip(reason="skipping this Test")
-    def test_deal_Create_Approve_Relation_Company(self):
+    def test_deal_Create_Approve_Relation_Company(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****TC_1 Verify the OEM Company Create The Deal and Approve by partner company****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        if "News Feed" in self.driver.page_source:
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
 
-        self.deal=dealregistration(self.driver)
-        self.deal.clickdealtab()
-        if "Deal registration" in self.driver.page_source:
-            self.logger.info("********** My Active Deals page & New Button will display for Creating new deal *********")
-
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        if "Deal registration" in driver.page_source:
+            self.logger.info(
+                "********** My Active Deals page & New Button will display for Creating new deal *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal Registration Page is not open successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
             assert False
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
-        time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
-        self.deal.departmentname(self.departmenttwo)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
-        self.deal.savedeal()
-        if "Deal Opportunity Created" in self.driver.page_source:
-            self.logger.info("********** Deal Created Successfully *********")
 
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
+        time.sleep(1)
+        deal.citydropdown()
+        deal.selectcity()
+        deal.departmentname(self.departmenttwo)
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        deal.selectenterprise()
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        deal.dealvalue(self.valueofdeal)
+        deal.savedeal()
+        if "Deal Opportunity Created" in driver.page_source:
+            self.logger.info("********** Deal Created Successfully *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal not Created Successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
             assert False
 
-        self.deal.okaybutton()
+        deal.okaybutton()
         time.sleep(1)
-        self.lp.clickLogout()
-        if "Login" in self.driver.page_source:
+        lp.clickLogout()
+        if "Login" in driver.page_source:
             self.logger.info("********** OEM Company Logout successfully *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Logout failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
             assert False
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        if "News Feed" in self.driver.page_source:
-            self.logger.info("********** partner Company Login successfully *********")
 
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        if "News Feed" in driver.page_source:
+            self.logger.info("********** partner Company Login successfully *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** partner Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "partner_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "partner_login_fail.png")
             assert False
 
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        if "Deal registration" in self.driver.page_source:
+        deal.clickdealtab()
+        deal.networkdeals()
+        if "Deal registration" in driver.page_source:
             self.logger.info("********** Network Deals page display  *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Network deals page not open **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "network_deals_fail_to_open.png")
+            driver.save_screenshot(".\\Screenshots\\" + "network_deals_fail_to_open.png")
             assert False
-        self.deal.pendingdeals()
-        self.deal.searchmydealcompany(self.searchtwo)
-        time.sleep(1)
-        self.deal.dealcompany()
-        if "Instavc Technologies" in self.driver.page_source:
-            self.logger.info("********** Latest created deal is Displaying *********")
 
+        deal.pendingdeals()
+        deal.searchmydealcompany(self.searchtwo)
+        time.sleep(1)
+        deal.dealcompany()
+        if "Instavc Technologies" in driver.page_source:
+            self.logger.info("********** Latest created deal is Displaying *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Not Displaying Latest Created Deal **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "failed_to_open_selected_company_pending_deals.png")
+            driver.save_screenshot(".\\Screenshots\\" + "failed_to_open_selected_company_pending_deals.png")
             assert False
-        self.deal.selectnewdeal()
-        time.sleep(1)
-        if "Deal Opportunity Details" in self.driver.page_source:
-            self.logger.info("********** Deal created and opened successfully by that created Deal *********")
 
+        deal.selectnewdeal()
+        time.sleep(1)
+        if "Deal Opportunity Details" in driver.page_source:
+            self.logger.info("********** Deal created and opened successfully by that created Deal *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Failed to open created deal **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_open_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_open_fail.png")
             assert False
-        self.deal.statusdropdown()
-        self.deal.approved()
-        self.deal.confirmtoapprove()
-        time.sleep(2)
-        if "Deal Approved Successfully" in self.driver.page_source:
-            self.logger.info("********** test_deal_Create_Approved_Relation_Company successfully *********")
 
+        deal.statusdropdown()
+        deal.approved()
+        deal.confirmtoapprove()
+        time.sleep(2)
+        if "Deal Approved Successfully" in driver.page_source:
+            self.logger.info("********** test_deal_Create_Approved_Relation_Company successfully *********")
         else:
             # Log and take a screenshot
             self.logger.error("************** Approved deal failed  **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "approved_deal_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "approved_deal_fail.png")
             assert False
 
     # @pytest.mark.skip(reason="skipping this Test")
@@ -200,232 +198,236 @@ class Test_Create_DealwithNetworkCompany(BaseClass):
     @pytest.mark.regression
     @pytest.mark.run(order=76)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
-    def test_deal_Create_Reject_Relation_Company(self):
+    def test_deal_Create_Reject_Relation_Company(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****TC_02 Verify the OEM Company Create The Deal and reject the deal by partner company****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        if "News Feed" in self.driver.page_source:
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        if "News Feed" in driver.page_source:
             self.logger.info("********** OEM Company Login successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
             assert False
 
-        self.deal=dealregistration(self.driver)
-        self.deal.clickdealtab()
-        if "Deal registration" in self.driver.page_source:
-            self.logger.info("********** My Active Deals page & New Button will display for Creating new deal *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Deal Registration Page is not open successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
-            assert False
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
-        time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
-        self.deal.departmentname(self.departmentthree)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
-        self.deal.savedeal()
-        if "Deal Opportunity Created" in self.driver.page_source:
-            self.logger.info("********** Deal Created Successfully *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Deal not Created Successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
-            assert False
-
-        self.deal.okaybutton()
-        self.lp.clickLogout()
-        if "Login" in self.driver.page_source:
-            self.logger.info("********** OEM Company Logout successfully *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** OEM Company Logout failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
-            assert False
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        if "News Feed" in self.driver.page_source:
-            self.logger.info("********** partner Company Login successfully *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** partner Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "partner_login_fail.png")
-            assert False
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        if "Deal registration" in self.driver.page_source:
-            self.logger.info("********** Network Deals page display  *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Network deals page not open **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "network_deals_fail_to_open.png")
-            assert False
-        self.deal.pendingdeals()
-        self.deal.searchmydealcompany(self.searchtwo)
-        time.sleep(1)
-        self.deal.dealcompany()
-        if "Instavc Technologies" in self.driver.page_source:
-            self.logger.info("********** Latest created deal is Displaying *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Not Displaying Latest Created Deal **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "failed_to_open_selected_company_pending_deals.png")
-            assert False
-        self.deal.selectnewdeal()
-        time.sleep(1)
-        if "Deal Opportunity Details" in self.driver.page_source:
-            self.logger.info("********** Deal created and opened successfully by that created Deal *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Failed to open created deal **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_open_fail.png")
-            assert False
-        self.deal.statusdropdown()
-        self.deal.clickreject()
-        self.deal.reasontoreject(self.reason)
-        self.deal.clickonreject()
-        time.sleep(2)
-        if "Deal Rejected Successfully" in self.driver.page_source:
-            self.logger.info("********** test_deal_Create_rejected_Relation_Company successfully *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** Rejected deal failed  **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "rejected_deal_fail.png")
-            assert False
-
-
-    # @pytest.mark.skip(reason="skipping this Test")
-
-    @pytest.mark.regression
-    @pytest.mark.run(order=77)
-    @pytest.mark.flaky(reruns=3, reruns_delay=2)
-
-
-    def test_deal_Create_Edit_Approve_Through_Notification(self):
-
-        self.logger.info("****TC_03 Create a Deal with OEM Company and Approve the Deal through Notification ****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        if "News Feed" in self.driver.page_source:
-            self.logger.info("********** OEM Company Login successfully *********")
-
-        else:
-            # Log and take a screenshot
-            self.logger.error("************** OEM Company Login failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
-            assert False
-
-        self.deal = dealregistration(self.driver)
-        self.deal.clickdealtab()
-        if "Deal registration" in self.driver.page_source:
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        if "Deal registration" in driver.page_source:
             self.logger.info(
                 "********** My Active Deals page & New Button will display for Creating new deal *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal Registration Page is not open successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
             assert False
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
         time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
-        self.deal.departmentname(self.department)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
-        self.deal.savedeal()
-        if "Deal Opportunity Created" in self.driver.page_source:
+        deal.citydropdown()
+        deal.selectcity()
+        deal.departmentname(self.departmentthree)
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        # deal.contactnumber(self.contnumber)
+        deal.selectenterprise()
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        # deal.currency(self.currencydetails)
+        deal.dealvalue(self.valueofdeal)
+        deal.savedeal()
+        if "Deal Opportunity Created" in driver.page_source:
             self.logger.info("********** Deal Created Successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal not Created Successfully **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
             assert False
-        self.deal.okaybutton()
-        self.lp.clickLogout()
-        if "Login" in self.driver.page_source:
+
+        deal.okaybutton()
+        lp.clickLogout()
+        if "Login" in driver.page_source:
             self.logger.info("********** OEM Company Logout successfully *********")
 
         else:
             # Log and take a screenshot
             self.logger.error("************** OEM Company Logout failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
             assert False
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        if "News Feed" in driver.page_source:
+            self.logger.info("********** partner Company Login successfully *********")
 
-        self.deal.clickonnotification()
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** partner Company Login failed **********")
+            driver.save_screenshot(".\\Screenshots\\" + "partner_login_fail.png")
+            assert False
+        deal.clickdealtab()
+        deal.networkdeals()
+        if "Deal registration" in driver.page_source:
+            self.logger.info("********** Network Deals page display  *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Network deals page not open **********")
+            driver.save_screenshot(".\\Screenshots\\" + "network_deals_fail_to_open.png")
+            assert False
+        deal.pendingdeals()
+        deal.searchmydealcompany(self.searchtwo)
+        time.sleep(1)
+        deal.dealcompany()
+        if "Instavc Technologies" in driver.page_source:
+            self.logger.info("********** Latest created deal is Displaying *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Not Displaying Latest Created Deal **********")
+            driver.save_screenshot(".\\Screenshots\\" + "failed_to_open_selected_company_pending_deals.png")
+            assert False
+        deal.selectnewdeal()
+        time.sleep(1)
+        if "Deal Opportunity Details" in driver.page_source:
+            self.logger.info("********** Deal created and opened successfully by that created Deal *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Failed to open created deal **********")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_open_fail.png")
+            assert False
+        deal.statusdropdown()
+        deal.clickreject()
+        deal.reasontoreject(self.reason)
+        deal.clickonreject()
+        time.sleep(2)
+        if "Deal Rejected Successfully" in driver.page_source:
+            self.logger.info("********** test_deal_Create_rejected_Relation_Company successfully *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Rejected deal failed  **********")
+            driver.save_screenshot(".\\Screenshots\\" + "rejected_deal_fail.png")
+            assert False
+
+    # @pytest.mark.skip(reason="skipping this Test")
+
+    @pytest.mark.regression
+    @pytest.mark.run(order=77)
+    @pytest.mark.flaky(reruns=3, reruns_delay=2)
+    def test_deal_Create_Edit_Approve_Through_Notification(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        self.logger.info("****TC_03 Create a Deal with OEM Company and Approve the Deal through Notification ****")
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        if "News Feed" in driver.page_source:
+            self.logger.info("********** OEM Company Login successfully *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** OEM Company Login failed **********")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_login_fail.png")
+            assert False
+
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        if "Deal registration" in driver.page_source:
+            self.logger.info(
+                "********** My Active Deals page & New Button will display for Creating new deal *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Deal Registration Page is not open successfully **********")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_registration_fail_to_open.png")
+            assert False
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
+        time.sleep(1)
+        deal.citydropdown()
+        deal.selectcity()
+        deal.departmentname(self.department)
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        # deal.contactnumber(self.contnumber)
+        deal.selectenterprise()
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        # deal.currency(self.currencydetails)
+        deal.dealvalue(self.valueofdeal)
+        deal.savedeal()
+        if "Deal Opportunity Created" in driver.page_source:
+            self.logger.info("********** Deal Created Successfully *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** Deal not Created Successfully **********")
+            driver.save_screenshot(".\\Screenshots\\" + "deal_creation_fail.png")
+            assert False
+        deal.okaybutton()
+        lp.clickLogout()
+        if "Login" in driver.page_source:
+            self.logger.info("********** OEM Company Logout successfully *********")
+
+        else:
+            # Log and take a screenshot
+            self.logger.error("************** OEM Company Logout failed **********")
+            driver.save_screenshot(".\\Screenshots\\" + "OEM_logout_fail.png")
+            assert False
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+
+        deal.clickonnotification()
 
         # changes excel sheet data
         wb = load_workbook("TestData/LoginData.xlsx")
         ws = wb.active
         department = ws['A16'].value
-        element = self.driver.find_element(By.XPATH, "//span[text()='Anand Mahindra created a new deal with Instavc Technologies in Department "+department +"']")
+        element = driver.find_element(By.XPATH,
+                                      "//span[text()='Anand Mahindra created a new deal with Instavc Technologies in Department " + department + "']")
         # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_deal_Create_Edit_Approve_Through_Notification.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_deal_Create_Edit_Approve_Through_Notification.png")
             assert False
 
         element.click()
-        self.deal.clickhere()
-        self.deal.dealdetailspage()
-        self.deal.approveediteddeal()
-        self.deal.confirmupdatedeal()
-        self.deal.closeapprovedtab()
+        deal.clickhere()
+        deal.dealdetailspage()
+        deal.approveediteddeal()
+        deal.confirmupdatedeal()
+        deal.closeapprovedtab()
         time.sleep(1)
 
     # @pytest.mark.skip(reason="skipping this Test")
@@ -433,75 +435,78 @@ class Test_Create_DealwithNetworkCompany(BaseClass):
     @pytest.mark.regression
     @pytest.mark.run(order=78)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
-
-    def test_deal_Reject_Through_Notification(self):
+    def test_deal_Reject_Through_Notification(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal = dealregistration(self.driver)
-        self.deal.clickdealtab()
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
         time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
+        deal.citydropdown()
+        deal.selectcity()
         time.sleep(2)
-        self.deal.departmentname(self.departmentfour)
+        deal.departmentname(self.departmentfour)
         time.sleep(2)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        # deal.contactnumber(self.contnumber)
+        deal.selectenterprise()
         time.sleep(2)
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        # deal.currency(self.currencydetails)
+        deal.dealvalue(self.valueofdeal)
         time.sleep(1)
-        self.deal.savedeal()
-        self.deal.okaybutton()
+        deal.savedeal()
+        deal.okaybutton()
         time.sleep(2)
-        self.lp.clickLogout()
+        lp.clickLogout()
         time.sleep(1)
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickonnotification()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickonnotification()
 
         # changes excel sheet data
         wb = load_workbook("TestData/LoginData.xlsx")
         ws = wb.active
         departmentfour = ws['C16'].value
-        element = self.driver.find_element(By.XPATH, "//span[text()='Anand Mahindra created a new deal with Instavc Technologies in Department "+departmentfour +"']")
+        element = driver.find_element(By.XPATH,
+                                      "//span[text()='Anand Mahindra created a new deal with Instavc Technologies in Department " + departmentfour + "']")
         # assert element.text == first_name, f"Expected '{first_name}' but found '{element.text}'"
 
         if element:
             self.logger.info(f"Found Employee name : {element.text}")
             assert True
-            # self.driver.quit()
+            # driver.quit()
         else:
             self.logger.info(f"Employee name not found: {element.text}")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_deal_Reject_Through_Notification.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_deal_Reject_Through_Notification.png")
             assert False
         element.click()
         time.sleep(3)
-        self.deal.clickhere()
+        deal.clickhere()
         time.sleep(2)
-        self.deal.statusdropdown()
+        deal.statusdropdown()
         time.sleep(2)
-        self.deal.clickreject()
+        deal.clickreject()
         time.sleep(2)
-        self.deal.reasontoreject(self.reason)
-        self.deal.clickonreject()
+        deal.reasontoreject(self.reason)
+        deal.clickonreject()
         time.sleep(3)
 
     # @pytest.mark.skip(reason="skipping this Test")
@@ -509,88 +514,88 @@ class Test_Create_DealwithNetworkCompany(BaseClass):
     @pytest.mark.regression
     @pytest.mark.run(order=79)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
-    def test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager(self):
+    def test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         self.logger.info("************* Super admin Login successfully **********")
-        self.deal=dealregistration(self.driver)
-        self.deal.clickdealtab()
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
         time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
-        self.deal.departmentname(self.departmentfive)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
-        self.deal.savedeal()
-        self.deal.okaybutton()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username2)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.dealcompany()
-        self.deal.selectnewdeal()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.dealcompany()
-        self.deal.selectnewdeal()
-        self.deal.statusdropdown()
-        self.deal.approved()
-        self.deal.confirmtoapprove()
+        deal.citydropdown()
+        deal.selectcity()
+        deal.departmentname(self.departmentfive)
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        deal.selectenterprise()
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        deal.dealvalue(self.valueofdeal)
+        deal.savedeal()
+        deal.okaybutton()
+        lp.clickLogout()
+        lp.setUserName(self.username2)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.dealcompany()
+        deal.selectnewdeal()
+        lp.clickLogout()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.dealcompany()
+        deal.selectnewdeal()
+        deal.statusdropdown()
+        deal.approved()
+        deal.confirmtoapprove()
         time.sleep(3)
-        if "Deal Approved Successfully" in self.driver.page_source:
+        if "Deal Approved Successfully" in driver.page_source:
             self.logger.info("********** Deal approve test is passed *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal approve test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_dealapprove.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_dealapprove.png")
             assert False
         time.sleep(3)
-        self.deal.closeapprovedtab()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username2)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.dealcompany()
-        self.deal.clickonactivedeals()
-        self.deal.selectnewdeal()
+        deal.closeapprovedtab()
+        lp.clickLogout()
+        lp.setUserName(self.username2)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.dealcompany()
+        deal.clickonactivedeals()
+        deal.selectnewdeal()
         time.sleep(3)
-        if "Deal Opportunity Details" in self.driver.page_source:
+        if "Deal Opportunity Details" in driver.page_source:
             self.logger.info("********** Deal details test is passed *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal details test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager.png")
+            driver.save_screenshot(
+                ".\\Screenshots\\" + "test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager.png")
             assert False
         time.sleep(3)
 
@@ -600,113 +605,115 @@ class Test_Create_DealwithNetworkCompany(BaseClass):
     @pytest.mark.pspk
     @pytest.mark.run(order=80)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
-    def test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager_Verify_My_Deals(self):
+    def test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager_Verify_My_Deals(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
         self.logger.info("****Started Login Test****")
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
         self.logger.info("************* Super admin Login successfully **********")
-        self.deal = dealregistration(self.driver)
-        self.deal.clickdealtab()
-        self.deal.clickonnewdeal()
-        self.deal.networkcomapnyselect(self.comapanyname)
-        self.deal.companydetails(self.nameofcompany)
-        self.deal.adreesdetails(self.address)
-        self.deal.countrydropdown()
-        self.deal.selectcountry()
-        self.deal.statedropdown()
-        self.deal.selectstate()
+        deal = dealregistration(driver)
+        deal.clickdealtab()
+        deal.clickonnewdeal()
+        deal.networkcomapnyselect(self.comapanyname)
+        deal.companydetails(self.nameofcompany)
+        deal.adreesdetails(self.address)
+        deal.countrydropdown()
+        deal.selectcountry()
+        deal.statedropdown()
+        deal.selectstate()
         time.sleep(1)
-        self.deal.citydropdown()
-        self.deal.selectcity()
-        self.deal.departmentname(self.departmentsix)
-        self.deal.contactname(self.contname)
-        self.deal.contactemail(self.contemail)
-        # self.deal.contactnumber(self.contnumber)
-        self.deal.selectenterprise()
-        self.deal.accountmanager(self.nameofmanager)
-        self.deal.relationmanager()
-        self.deal.enteropportunity(self.oppdetails)
-        # self.deal.currency(self.currencydetails)
-        self.deal.dealvalue(self.valueofdeal)
-        self.deal.savedeal()
-        self.deal.okaybutton()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username2)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.searchmydealcompany(self.searchtwo)
+        deal.citydropdown()
+        deal.selectcity()
+        deal.departmentname(self.departmentsix)
+        deal.contactname(self.contname)
+        deal.contactemail(self.contemail)
+        # deal.contactnumber(self.contnumber)
+        deal.selectenterprise()
+        deal.accountmanager(self.nameofmanager)
+        deal.relationmanager()
+        deal.enteropportunity(self.oppdetails)
+        # deal.currency(self.currencydetails)
+        deal.dealvalue(self.valueofdeal)
+        deal.savedeal()
+        deal.okaybutton()
+        lp.clickLogout()
+        lp.setUserName(self.username2)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.searchmydealcompany(self.searchtwo)
         time.sleep(1)
-        self.deal.dealcompany()
-        self.deal.selectnewdeal()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username1)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.searchmydealcompany(self.searchtwo)
-        self.deal.dealcompany()
-        self.deal.selectnewdeal()
-        self.deal.statusdropdown()
-        self.deal.approved()
-        self.deal.confirmtoapprove()
+        deal.dealcompany()
+        deal.selectnewdeal()
+        lp.clickLogout()
+        lp.setUserName(self.username1)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.searchmydealcompany(self.searchtwo)
+        deal.dealcompany()
+        deal.selectnewdeal()
+        deal.statusdropdown()
+        deal.approved()
+        deal.confirmtoapprove()
         time.sleep(3)
-        if "Deal Approved Successfully" in self.driver.page_source:
+        if "Deal Approved Successfully" in driver.page_source:
             self.logger.info("********** Deal approve test is passed *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal approve test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_dealapprove.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_dealapprove.png")
             assert False
         time.sleep(3)
-        self.deal.closeapprovedtab()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username2)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
-        self.deal.networkdeals()
-        self.deal.pendingdeals()
-        self.deal.searchmydealcompany(self.searchtwo)
+        deal.closeapprovedtab()
+        lp.clickLogout()
+        lp.setUserName(self.username2)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
+        deal.networkdeals()
+        deal.pendingdeals()
+        deal.searchmydealcompany(self.searchtwo)
         time.sleep(1)
-        self.deal.dealcompany()
-        self.deal.clickonactivedeals()
-        self.deal.selectnewdeal()
-        self.lp.clickLogout()
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        self.deal.clickdealtab()
+        deal.dealcompany()
+        deal.clickonactivedeals()
+        deal.selectnewdeal()
+        lp.clickLogout()
+        lp.setUserName(self.username)
+        lp.setPassword(self.password)
+        lp.clickLogin()
+        deal.clickdealtab()
         time.sleep(1)
-        self.deal.searchmydealcompany(self.search)
+        deal.searchmydealcompany(self.search)
         time.sleep(1)
-        self.deal.mydealscompany()
-        self.deal.selectnewdealtwo()
-        self.deal.backdealspage()
-        self.deal.mypendingdeals()
-        self.deal.selectnewdealtwo()
-        self.deal.backdealspage()
-        self.deal.myrejectdeals()
-        self.deal.selectnewdealtwo()
+        deal.mydealscompany()
+        deal.selectnewdealtwo()
+        deal.backdealspage()
+        deal.mypendingdeals()
+        deal.selectnewdealtwo()
+        deal.backdealspage()
+        deal.myrejectdeals()
+        deal.selectnewdealtwo()
         time.sleep(3)
-        if "Deal Opportunity Details" in self.driver.page_source:
+        if "Deal Opportunity Details" in driver.page_source:
             self.logger.info("********** Deal details test is passed *********")
-
         else:
             # Log and take a screenshot
             self.logger.error("************** Deal details test is failed **********")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager_Verify_My_Deals.png")
+            driver.save_screenshot(
+                ".\\Screenshots\\" + "test_deal_Create_Verify_Relation_Manager_and_Approve_Check_Relation_manager_Verify_My_Deals.png")
             assert False
         time.sleep(3)
-        self.deal.backdealspage()
-        self.deal.myexpiredeals()
+        deal.backdealspage()
+        deal.myexpiredeals()
         time.sleep(3)
 
     if __name__ == '__main__':

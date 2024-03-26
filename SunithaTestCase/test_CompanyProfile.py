@@ -18,7 +18,7 @@ from utilities.readProperties import ReadConfig
 from sunithaPageObjects.MyProfile import MyprofilePage
 from GenericLib.BaseClass import BaseClass
 
-class TestCompanyProfile(BaseClass):
+class TestCompanyProfile():
     baseURL = ReadConfig.getApplicationURL()
     # username = ReadConfig.getUseremail()
     password = ReadConfig.getPassword()
@@ -80,94 +80,93 @@ class TestCompanyProfile(BaseClass):
     @pytest.mark.regression
     @pytest.mark.run(order=36)
     # @pytest.mark.skip(reason="skipping this test")
-    def test_BannerImage(self):
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickCompanyProfile()
+    def test_BannerImage(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+        lp.clickCompanyProfile()
         self.logger.info("****** TC_01	Verify the Banner image/upload/save/edit/delete *****")
-        self.lp.BannerImageClick(self.absolute_path3)
-        self.lp.SaveBannerImage()
-        # time.sleep(3)
+        lp.BannerImageClick(self.absolute_path3)
+        lp.SaveBannerImage()
 
-        xpath = "// div[contains(text(), 'Banner image uploaded successfully.')]"
+        xpath = "//div[contains(text(), 'Banner image uploaded successfully.')]"
         try:
-            # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
-            self.logger.info(f"Text Found : {element.text}")
+            self.logger.info(f"Text Found: {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
             assert False
 
-        self.my = MyprofilePage(self.driver)
+        my = MyprofilePage(driver)
         time.sleep(1)
-        self.my.clickClosetoaster()
-        # time.sleep(3)
-        self.lp.EditBanner()
-        self.lp.UploadBannerImageAgain(self.absolute_path4)
-        self.lp.SaveBannerImage()
-        xpath = "// div[contains(text(), 'Banner image uploaded successfully.')]"
+        my.clickClosetoaster()
+        lp.EditBanner()
+        lp.UploadBannerImageAgain(self.absolute_path4)
+        lp.SaveBannerImage()
+        xpath = "//div[contains(text(), 'Banner image uploaded successfully.')]"
         try:
-            # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
-            self.logger.info(f"Text Found : {element.text}")
+            self.logger.info(f"Text Found: {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
             assert False
 
-        # time.sleep(3)
         time.sleep(1)
-        self.my.clickClosetoaster()
-        self.lp.EditBanner()
-        self.lp.BannerImageRemove()
-        # time.sleep(3)
-        xpath = "// div[contains(text(), 'Banner image removed successfully')]"
+        my.clickClosetoaster()
+        lp.EditBanner()
+        lp.BannerImageRemove()
+        xpath = "//div[contains(text(), 'Banner image removed successfully')]"
         try:
-            # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
-            self.logger.info(f"Text Found : {element.text}")
+            self.logger.info(f"Text Found: {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_BannerImage.png")
             assert False
 
     @pytest.mark.run(order=37)
     # @pytest.mark.test
     @pytest.mark.regression
     # @pytest.mark.skip(reason="skipping this test")
-    def test_ProfileImage(self):
-        self.lp = LoginPage(self.driver)
+    def test_ProfileImage(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        self.lp = LoginPage(driver)
         self.lp.setUserName(self.username)
         self.lp.setpassword(self.password)
         self.lp.clickLogin()
         self.lp.clickCompanyProfile()
-        self.logger.info("****** TC_03	Verify the Profile  image Upload/edit/save/delete  *****")
+        self.logger.info("****** TC_03	Verify the Profile image Upload/edit/save/delete *****")
         self.lp.ProfileImageClick(self.absolute_path5)
         self.lp.SaveProfileImage()
 
-        xpath = "// div[contains(text(), 'Profile image uploaded successfully.')]"
+        xpath = "//div[contains(text(), 'Profile image uploaded successfully.')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
             assert False
 
         self.lp.EditProfile()
@@ -177,248 +176,256 @@ class TestCompanyProfile(BaseClass):
         xpath = "//div[contains(text(),'Profile image uploaded successfully.')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
             assert False
-        # self.my = MyprofilePage(self.driver)
-        # time.sleep(1)
-        # self.my.clickClosetoaster()
+
         self.lp.EditProfile()
         self.lp.ProfileImageRemove()
-        # time.sleep(4)
-        xpath = "// div[contains(text(), 'Profile image removed successfully.')]"
+        xpath = "//div[contains(text(), 'Profile image removed successfully.')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ProfileImage.png")
             assert False
 
     @pytest.mark.run(order=38)
     @pytest.mark.regression
     # @pytest.mark.skip(reason="skipping this test")
-    def test_OfficialDetails(self):
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickCompanyProfile()
+    def test_OfficialDetails(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+        lp.clickCompanyProfile()
         self.logger.info("****** TC_05	Verify the displaying all the Official details  *****")
-        self.lp.ofc_details()
-        # self.lp.setCompany(self.Companyname)
-        self.lp.setOrganisation(self.orgname)
-        self.lp.RemoveIndustry()
-        self.lp.setIndustry(self.industry)
-        self.lp.clickIndustryName()
-        self.lp.clickCalendar()
-        self.lp.clickonpreviousmonth()
-        self.lp.clickDate()
-        self.lp.setwebsite(self.website)
-        self.lp.clicksave()
+        lp.ofc_details()
+        # lp.setCompany(self.Companyname)
+        lp.setOrganisation(self.orgname)
+        lp.RemoveIndustry()
+        lp.setIndustry(self.industry)
+        lp.clickIndustryName()
+        lp.clickCalendar()
+        lp.clickonpreviousmonth()
+        lp.clickDate()
+        lp.setwebsite(self.website)
+        lp.clicksave()
 
         xpath = "// div[contains(text(), 'Profile updated  successfully')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_OfficialDetails.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_OfficialDetails.png")
             assert False
 
     @pytest.mark.run(order=39)
     # @pytest.mark.test
     @pytest.mark.regression
     # @pytest.mark.skip(reason="skipping this test")
-    def test_OverView(self):
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        self.lp.clickLogin()
-        # self.lp.clickNewsfeedModule()
-        self.lp.clickCompanyProfile()
-        self.lp.scrollIntoOverView()
+    def test_OverView(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        self.logger.info("****Started Login Test****")
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+        # lp.clickNewsfeedModule()
+        lp.clickCompanyProfile()
+        lp.scrollIntoOverView()
 
         self.logger.info("****** TC_11	Verify the Overview, by Add, Save and Update  *****")
         time.sleep(2)
-        self.lp.clickEdit()
-        self.lp.setCompanySummary(self.companysummary)
-        self.lp.setAddress(self.address)
-        actions = ActionChains(self.driver)
+        lp.clickEdit()
+        lp.setCompanySummary(self.companysummary)
+        lp.setAddress(self.address)
+        actions = ActionChains(driver)
         actions.send_keys(Keys.PAGE_DOWN).perform()
-        self.driver.execute_script("window.scrollBy(0, 500);")
+        driver.execute_script("window.scrollBy(0, 500);")
         time.sleep(2)
-        self.lp.countrydropdown()
-        self.lp.clickonselectindia()
-        self.lp.clickState()
-        self.lp.clickstatelistbox()
-        self.lp.selectState()
-        self.lp.clickcity()
-        self.lp.selectCity()
-        self.lp.setpincode(self.pincode)
-        self.lp.setdomainName(self.domainname)
-        self.lp.setcontactPerson(self.contactperson)
-        self.lp.clicksave()
+        lp.countrydropdown()
+        lp.clickonselectindia()
+        lp.clickState()
+        lp.clickstatelistbox()
+        lp.selectState()
+        lp.clickcity()
+        lp.selectCity()
+        lp.setpincode(self.pincode)
+        lp.setdomainName(self.domainname)
+        lp.setcontactPerson(self.contactperson)
+        lp.clicksave()
         xpath = "// div[contains(text(), 'Company profile updated')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_OverView.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_OverView.png")
             assert False
 
-
     @pytest.mark.run(order=40)
-    # @pytest.mark.test
+    @pytest.mark.test
     @pytest.mark.sunitha
     # @pytest.mark.skip(reason="skipping this test")
-    def test_Awards(self):
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickCompanyProfile()
-        self.lp.scrollIntoAwards()
+    def test_Awards(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        self.logger.info("****Started Awards Test****")
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+        lp.clickCompanyProfile()
+        lp.scrollIntoAwards()
         self.logger.info("****** TC_13	Verify the Awards, by Add, Save and Edit *****")
-        self.lp.AwardsEdit()
-        self.lp.ClickPreview(self.absolute_path7)
-        self.lp.TitleInput(self.awardTitle)
-        self.lp.SaveAward()
-        xpath = "// div[contains(text(), 'Award added successfully')]"
+        lp.AwardsEdit()
+        lp.ClickPreview(self.absolute_path7)
+        lp.TitleInput(self.awardTitle)
+        lp.SaveAward()
+        xpath = "//div[contains(text(), 'Award added successfully')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_Awards.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_Awards.png")
             assert False
 
     @pytest.mark.run(order=41)
     @pytest.mark.flaky(rerun=3, rerun_delay=2)
     @pytest.mark.regression
+    @pytest.mark.test
     # @pytest.mark.skip(reason="skipping this test")
-    def test_socialMediaLinks(self):
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        self.lp.clickLogin()
-        self.lp.clickCompanyProfile()
+    def test_socialMediaLinks(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+        lp.clickCompanyProfile()
         self.logger.info("****** TC_16	Verify Social Media Links details, by Add, Save and Update  *****")
-        self.lp.clicksocialMediaLinks()
-        self.lp.clicksocilmedialist()
-        self.lp.clickSocialMediaName()
-        self.lp.setUrl(self.url)
-        self.lp.clickUrlsave()
-        xpath = "// div[contains(text(), 'Profile updated  successfully')]"
+        lp.clicksocialMediaLinks()
+        lp.clicksocilmedialist()
+        lp.clickSocialMediaName()
+        lp.setUrl(self.url)
+        lp.clickUrlsave()
+        xpath = "//div[contains(text(),'Profile updated  successfully')]"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_socialMediaLinks.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_socialMediaLinks.png")
             assert False
-
 
     @pytest.mark.run(order=42)
     @pytest.mark.falky(rerun=3, rerun_delay=2)
-    @pytest.mark.regression
-    def test_ClickingElements(self):
-        self.lp = LoginPage(self.driver)
-        # time.sleep(2)
-        self.lp.setUserName(self.username)
-        self.lp.setpassword(self.password)
-        # time.sleep(2)
-        self.lp.clickLogin()
-        # time.sleep(2)
-        #self.lp.clickNewsfeedModule()
-        # time.sleep(2)
-        self.lp.clickCompanyProfile()
 
+    @pytest.mark.regression
+    def test_ClickingElements(self, driver):
+        driver.maximize_window()
+        self.logger.info("****Opening URL****")
+        driver.get(self.baseURL)
+        self.logger.info("****Started Clicking Elements Test****")
+        lp = LoginPage(driver)
+        lp.setUserName(self.username)
+        lp.setpassword(self.password)
+        lp.clickLogin()
+
+        lp.clickCompanyProfile()
         time.sleep(1)
         self.logger.info("****** TC_19	Verify Networks by click on that  *****")
-        self.lp.NetworksClick()
+        lp.NetworksClick()
         xpath = "//button[normalize-space()='MY NETWORKS']"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
             assert False
 
-        # time.sleep(2)
-        self.driver.back()
-        # time.sleep(3)
+        driver.back()
+        time.sleep(3)
         self.logger.info("****** TC_20	verify the certificate by click on that  *****")
-        self.lp.CertificationsClick()
+        lp.CertificationsClick()
         xpath = "//button[normalize-space()='Create certification']"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
             assert False
 
-        self.driver.back()
+        driver.back()
         time.sleep(3)
         self.logger.info("****** TC_18	Verify Resources by click on that *****")
-        self.lp.ResourceClick()
+        lp.ResourceClick()
         xpath = "//button[normalize-space()='My RESOURCES']"
         try:
             # Use WebDriverWait to wait for the element to be present
-            element = WebDriverWait(self.driver, 10).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, xpath))
             )
             self.logger.info(f"Text Found : {element.text}")
             assert True
         except:
             self.logger.info(f"Text Not Found")
-            self.driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
+            driver.save_screenshot(".\\Screenshots\\" + "test_ClickingElements.png")
             assert False
 
+        driver.back()
         time.sleep(2)
-        self.driver.back()
-        # self.driver.back()
         self.logger.info("****** TC_25	verify the setting tab by clicking on it *****")
-        self.lp.Settings()
+        lp.Settings()
         self.logger.info("****** TC_24	verify the news feed by clicking on that  *****")
-        self.lp.NewsFeed()
+        lp.NewsFeed()
 
     if __name__ == '__main__':
         unittest.main(verbosity=2)
