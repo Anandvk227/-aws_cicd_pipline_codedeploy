@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -9,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 class companyListingPage:
     emailField_xpath = "//input[@id='email']"
     passwordField_xpath = "//input[@id='outlined-adornment-password password']"
-
     License_xpath = "//span[text()='License and Subscriptions']"
     searchFiled_xpath = "//input[@type='search']"
     subscription_path = "//body/div[@id='root']/div[1]/div[1]/div[5]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/button[2]"

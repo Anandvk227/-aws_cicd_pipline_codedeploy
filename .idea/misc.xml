@@ -3,9 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (nopCommerceProject) (2)" />
   </component>
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (inlynk_web_QA_automation)" project-jdk-type="Python SDK" />
-=======
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
->>>>>>> ad9a7b3abbfc366026321937e085d450eb224ab5
 </project>

@@ -12,6 +12,7 @@ from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from GenericLib.BaseClass import BaseClass
+
 class TestConfiguration():
     baseURL = ReadConfig.getApplicationURL()
     DeptName = "QA"
@@ -39,8 +40,8 @@ class TestConfiguration():
     logger = LogGen.loggen()
 
     @pytest.mark.regression
-    # @pytest.mark.test
-    # @pytest.mark.flaky(rerun=3, reun_delay=2)
+    @pytest.mark.test9
+    # @pytest.mark.flaky(reruns=3, reruns_delay=2)
     @pytest.mark.run(order=7)
     def test_createDept(self, driver):
         driver.maximize_window()
@@ -54,7 +55,7 @@ class TestConfiguration():
         lp.clickNewsFeed()
         cp = ConfigurationPage(driver)
         cp.clickModuleConfiguration()
-        cp.clickDepartments()
+        # cp.clickDepartments()
         self.logger.info(" Started TC_01 : Verify create NEW Department ")
         cp.clickNewBtn()
         cp.setDepartmentName(self.DeptName + " " + self.first_name)
@@ -132,8 +133,8 @@ class TestConfiguration():
         lp.clickNewsFeed()
         cp = ConfigurationPage(driver)
         cp.clickModuleConfiguration()
-        cp.clickDepartments()
-        cp.clickDepartments()
+        # cp.clickDepartments()
+        # cp.clickDepartments()
         cp.setsearchField(self.DeptName + " " + self.first_name)
         time.sleep(2)
         cp.clickEditDepartment()
@@ -151,8 +152,12 @@ class TestConfiguration():
             driver.save_screenshot(".\\Screenshots\\" + "test_updateDept.png")
             self.logger.error("********* updated Department Test is Failed ***********")
             assert False
-
-        cp.clickopenDept()
+        element = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//span[contains(text(),'" + self.DeptName + " " + self.first_name + "')]"))
+        )
+        element.click()
+        # cp.clickopenDept()
         cp.clickDivisionsTab()
         cp.setsearchField(self.DivisionName)
         self.logger.info("********* TC_07	Verify Edit the Division ***********")
@@ -194,7 +199,7 @@ class TestConfiguration():
             assert False
 
     @pytest.mark.regression
-    # @pytest.mark.test
+    @pytest.mark.test9
     @pytest.mark.run(order=9)
     def test_DeleteDept(self, driver):
         driver.maximize_window()
@@ -208,9 +213,9 @@ class TestConfiguration():
         lp.clickNewsFeed()
         cp = ConfigurationPage(driver)
         cp.clickModuleConfiguration()
-        cp.clickDepartments()
+        # cp.clickDepartments()
         time.sleep(3)
-        cp.setsearchField(self.DeptName + " " + self.first_name)
+        # cp.setsearchField(self.DeptName + " " + self.first_name)
         time.sleep(2)
         self.logger.info("****TC_03	Verify Delete Department****")
         cp.clickDeleteDepartment()
@@ -228,7 +233,12 @@ class TestConfiguration():
             assert False
 
         cp.clickDeleteDepartmentCancel()
-        cp.clickopenDept()
+        element = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//span[contains(text(),'" + self.DeptName + " " + self.first_name + "')]"))
+        )
+        element.click()
+        # cp.clickopenDept()
         self.logger.info("****TC_05	Verify by clicking on created Department****")
         cp.clickDivisionsTab()
         self.logger.info("****TC_09	Verify Search Division****")
@@ -270,7 +280,7 @@ class TestConfiguration():
         cp.clickConfigurationtextLink()
 
         # Wait for a few seconds (for demonstration purposes)
-        time.sleep(3)
+        # time.sleep(3)
 
         cp.setsearchField(self.DeptName + " " + self.first_name)
         time.sleep(2)
@@ -304,7 +314,7 @@ class TestConfiguration():
         lp.clickNewsFeed()
         cp = ConfigurationPage(driver)
         cp.clickModuleConfiguration()
-        cp.clickDepartments()
+        # cp.clickDepartments()
         self.logger.info(" Started TC_01 : Verify create NEW Department ")
         cp.clickNewBtn()
         cp.setDepartmentName(self.DeptName + " " + self.first_name2)
@@ -325,7 +335,12 @@ class TestConfiguration():
 
         self.logger.info(" Started TC_04 : Verify Search Department ")
         cp.setsearchField(self.DeptName + " " + self.first_name2)
-        cp.clickopenDept()
+        element = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//span[contains(text(),'" + self.DeptName + " " + self.first_name2 + "')]"))
+        )
+        element.click()
+        # cp.clickopenDept()
         self.logger.info(" Started TC_06 : Verify create NEW Division ")
         cp.clickDivisionsTab()
         cp.clickNewBtn()

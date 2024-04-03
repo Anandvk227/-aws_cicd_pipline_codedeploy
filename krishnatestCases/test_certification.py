@@ -1,4 +1,5 @@
 import os
+import unittest
 
 import pytest
 import time
@@ -16,6 +17,7 @@ from pageObjects.randomGen import randomGen
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from GenericLib.BaseClass import BaseClass
+
 
 class Test_Certification():
     baseURL = ReadConfig.getApplicationURL()
@@ -715,17 +717,3 @@ class Test_Certification():
 
     if __name__ == '__main__':
         unittest.main(verbosity=2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,6 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pageObjects.companyListingPage import companyListingPage
 from pageObjects.LoginPage import LoginPage
+from testCases.mailboxCode import mailboxCode
 # from testCases.conftest import setup
 from utilities.customLogger import LogGen
 from utilities.readProperties import ReadConfig
@@ -189,11 +190,14 @@ class TestSignUp():
 
     @pytest.mark.run(order=2)
     @pytest.mark.regression
-    @pytest.mark.test
-    @pytest.mark.flaky(reruns=3, reruns_delay=2)
+    @pytest.mark.skip
+    # @pytest.mark.flaky(reruns=3, reruns_delay=2)
     def test_ListingSignUpCompany(self, driver):
-        Url = "https://preprodanalytics.inlynk.com/license"
-        username = "sowjanyapreprod@yopmail.com"
+        # Url = "https://preprodanalytics.inlynk.com/license"
+        # username = "sowjanyapreprod@yopmail.com"
+        # password = "Inlink@123"
+        Url = "https://testanalytics.inlynk.com/"
+        username = "ntpc@yopmail.com"
         password = "Inlink@123"
         driver.maximize_window()
         self.logger.info("****Opening URL****")

@@ -8,6 +8,7 @@ class randomGen:
         prefix += ''.join(random.choice(chars) for _ in range(size - 1))  # Generate remaining characters
         suffix = "@mailcatch.com"
         # suffix = "@yopmail.com"
+        # suffix = "@yopmail.com" //https://moakt.com/en
         return prefix + suffix
 
 

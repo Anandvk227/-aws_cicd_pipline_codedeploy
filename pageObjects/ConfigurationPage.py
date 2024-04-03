@@ -22,7 +22,7 @@ class ConfigurationPage:
     tab_Divisions_xpath = "//button[normalize-space()='Divisions']"
     tab_Designations_xpath = "//button[normalize-space()='Designations']"
     linkText_EditDepartment_xpath = "//span[normalize-space()='Edit']"
-    linkText_DeleteDepartment_xpath = "//body/div[@id='root']/div[1]/div[1]/div[2]/div[2]/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]"
+    linkText_DeleteDepartment_xpath = "//span[text()='Delete']"
     linkText_DeleteDepartmentCancel_xpath = "//button[normalize-space()='Cancel']"
     linkText_DeleteDepartmentDelete_xpath = "//button[normalize-space()='Delete']"
     icon_DeleteDivision_xpath = "(//*[name()='svg'][@aria-label='Delete'])[1]"
@@ -110,14 +110,27 @@ class ConfigurationPage:
         text = DesignationCreatedSuccessful.text  # Access 'text' as an attribute, not as a function
         return text
     def clickModuleConfiguration(self):
+        # wait = WebDriverWait(self.driver, 10)
+        # element = wait.until(EC.visibility_of_element_located((By.XPATH, self.Module_configuration_xpath)))
+        # self.driver.execute_script("arguments[0].scrollIntoView({block: 'start', inline: 'nearest'});", element)
+        #
+        # # Wait for a short while to ensure the element is clickable
+        # time.sleep(1)
+        #
+        # element.click()
         wait = WebDriverWait(self.driver, 10)
-        element = wait.until(EC.visibility_of_element_located((By.XPATH, self.Module_configuration_xpath)))
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'start', inline: 'nearest'});", element)
-
+        element = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Business Settings']")))
         # Wait for a short while to ensure the element is clickable
         time.sleep(1)
 
         element.click()
+        wait = WebDriverWait(self.driver, 10)
+        element1 = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Department']")))
+
+        # Wait for a short while to ensure the element is clickable
+        time.sleep(1)
+
+        element1.click()
 
     def setsearchField(self, searchField):
         # time.sleep(2)

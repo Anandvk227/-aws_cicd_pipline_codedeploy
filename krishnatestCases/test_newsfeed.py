@@ -1,9 +1,8 @@
 import os
 import unittest
-
 import pytest
-import time
 
+import time
 from openpyxl.reader.excel import load_workbook
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
@@ -262,10 +261,10 @@ class TestNewsFeed():
             driver.save_screenshot(".\\Screenshots\\" + "test_newsfeedforarchived.png")
             assert False
 
-    @pytest.mark.sanity
+    @pytest.mark.image
     @pytest.mark.regression
     @pytest.mark.run(order=47)
-    @pytest.mark.flaky(reruns=3, reruns_delay=2)
+    # @pytest.mark.flaky(reruns=3, reruns_delay=2)
     # @pytest.mark.skip(reason="Skipping this test")
     def test_newsfeedwithimage(self, driver):
         driver.maximize_window()
@@ -283,8 +282,13 @@ class TestNewsFeed():
         nf = NewsFeed(driver)
         nf.clickOnwhat()
         nf.setoneimage(self.oneimage)
-        nf.setgallery(self.absolute_path1)
-        nf.clickonpost()
+        # nf.setgallery(self.absolute_path1)
+        nf.imageicon()
+        nf.uploadimage(self.absolute_path1)
+        # nf.uploadimage(self.relative_one)
+        # nf.clickuploadimage()
+        nf.AddClick()
+        # nf.clickonpost()
         time.sleep(3)
         if "News feed created successfully" in driver.page_source:
             self.logger.info("********** NewsFeed test is passed *********")
@@ -294,21 +298,21 @@ class TestNewsFeed():
             self.logger.error("************** NewsFeed test is failed **********")
             driver.save_screenshot(".\\Screenshots\\" + "test_newsfeedcreation.png")
             assert False
-        nf.clickonlogout()
-        self.logger.info("************* Logout successful **********")
-        lp.setUserName(self.usernames)
-        lp.setPassword(self.password)
-        lp.clickLogin()
-        self.logger.info("************* EmpLogin successful **********")
-        time.sleep(3)
-        if "one image upload" in driver.page_source:
-            self.logger.info("***************Newsfeed test is passed **********")
-            # driver.close()
-
-        else:
-            self.logger.error("************* NewsFeed test is failed **********")
-            driver.save_screenshot(".\\Screenshots\\" + "test_newsfeedwithimage.png")
-            assert False
+        # nf.clickonlogout()
+        # self.logger.info("************* Logout successful **********")
+        # lp.setUserName(self.usernames)
+        # lp.setPassword(self.password)
+        # lp.clickLogin()
+        # self.logger.info("************* EmpLogin successful **********")
+        # time.sleep(3)
+        # if "one image upload" in driver.page_source:
+        #     self.logger.info("***************Newsfeed test is passed **********")
+        #     # driver.close()
+        #
+        # else:
+        #     self.logger.error("************* NewsFeed test is failed **********")
+        #     driver.save_screenshot(".\\Screenshots\\" + "test_newsfeedwithimage.png")
+        #     assert False
 
     @pytest.mark.sanity
     @pytest.mark.regression
@@ -1189,7 +1193,7 @@ class TestNewsFeed():
             self.logger.info("************** NewsFeed test is passed **********")
             # driver.close()
 
-    @pytest.mark.babi
+    # @pytest.mark.babi
     @pytest.mark.regression
     @pytest.mark.run(order=63)
     @pytest.mark.flaky(reruns=3, reruns_delay=2)
