@@ -5,59 +5,157 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afc4c8a0-00e7-48ac-8d8d-410cfcb5e530" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Files/Free_Test_Data_1MB_PDF.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pageObjects/productWarranty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCases/mailboxCode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testCases/test_PW.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.pytest_cache/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.pytest_cache/CACHEDIR.TAG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.pytest_cache/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.pytest_cache/v/cache/nodeids" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.pytest_cache/v/cache/stepwise" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/InLynk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/InLynk.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Reports/assets/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Reports/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configurations/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Configurations/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/deal_creation_fail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_EditRecognition_Failed_110925032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_MediaDriveEmployeeCreateMedia_Failed_112325032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_OfficialDetails_Failed_101525032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_SocialMediaLinks_Failed_101425032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_TrashEmployeeMedia_Failed_112325032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_UnpublishedRecognition_and_Verify_in_Employee_account_Failed_110725032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_UnpublishedtoPunlishRecognition_Failed_110825032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_categorycreationforcompany_Failed_103525032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_categorycreationforhierarchy_Failed_103825032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificateverificationforemployee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificateverificationforrelationcompany.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificationcreating_Failed_105225032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificationcreatingeditinganddeleting_Failed_105025032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificationcreation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificationverificationforrelationcompany_Failed_105225032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_certificationverificationforremployee_Failed_105325032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Approve_Relation_Company_Failed_105325032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Approve_Relation_Company_Failed_105425032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Approve_Relation_Company_Failed_105525032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Edit_Approve_Through_Notification_Failed_105825032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Edit_Approve_Through_Notification_Failed_105925032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_deal_Create_Edit_Approve_Through_Notification_Failed_110125032024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screenshots/test_login_Valid_UsernamePassword_Failed_094925032024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/094625032024/report_094638.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/094725032024/report_094706.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/095302042024/report_095335.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/100502042024/report_100520.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/100602042024/report_100629.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/100802042024/report_100846.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/102603042024/report_102620.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/103126032024/report_103139.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/103226032024/report_103226.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/103803042024/report_103833.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/112002042024/report_112016.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/112202042024/report_112250.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/112502042024/report_112531.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/113102042024/report_113116.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/113502042024/report_113540.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/114402042024/report_114449.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/114426032024/report_114404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/114526032024/report_114533.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/114602042024/report_114608.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/114802042024/report_114854.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115226032024/report_115219.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115226032024/report_115249.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115326032024/report_115341.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115402042024/report_115433.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115502042024/report_115555.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115802042024/report_115819.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115826032024/report_115811.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/115826032024/report_115844.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/120026032024/report_120035.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/120126032024/report_120121.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/120626032024/report_120603.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/120826032024/report_120801.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/120826032024/report_120831.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121102042024/report_121108.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121102042024/report_121148.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121302042024/report_121308.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121402042024/report_121457.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121826032024/report_121833.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121926032024/report_121908.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/121926032024/report_121944.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124502042024/report_124520.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124602042024/report_124644.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124626032024/report_124617.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124726032024/report_124751.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124926032024/report_124912.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/124926032024/report_124950.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/125002042024/report_125022.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/125026032024/report_125026.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/125126032024/report_125111.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/125926032024/report_125925.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/130026032024/report_130003.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/130026032024/report_130058.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/130802042024/report_130819.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/131002042024/report_131001.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/131102042024/report_131127.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/131502042024/report_131531.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/135926032024/report_135936.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/141502042024/report_141530.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/141702042024/report_141713.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/141802042024/report_141820.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/142202042024/report_142250.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/142302042024/report_142314.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/142402042024/report_142404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/142502042024/report_142544.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/142702042024/report_142703.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/143202042024/report_143236.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/145502042024/report_145558.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/151222032024/report_151219.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/151502042024/report_151521.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/152102042024/report_152159.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/153502042024/report_153504.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/154502042024/report_154513.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/155002042024/report_155009.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/155102042024/report_155155.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/155702042024/report_155747.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/161703042024/report_161755.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/161903042024/report_161911.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/162003042024/report_162046.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/162103042024/report_162140.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/162203042024/report_162245.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/163103042024/report_163101.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/165102042024/report_165108.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/assets/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_131702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_142902042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_143402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_143502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_145802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_151702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_151802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_CreateConfDept_Failed_152402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_131602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_142802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_143402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_145702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_151702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_152302042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_153702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_154502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_155102042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_155402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_DeleteDept_Failed_155902042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_EditDept_Failed_131602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_EditDept_Failed_142802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_EditDept_Failed_143302042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_EditDept_Failed_145702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_ListingSignUpCompany_Failed_095602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_ListingSignUpCompany_Failed_095702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_ListingSignUpCompany_Failed_100602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_RegisterPW_Failed_161903042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_RegisterPW_Failed_162103042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_RegisterPW_Failed_162203042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_RegisterPW_Failed_162303042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_RegisterPW_Failed_163103042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_095502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_100502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_100802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_101002042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_102803042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_104003042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_112102042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_112302042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_112602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_113202042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_113602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_114502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_114702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_114902042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_120002042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_121402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_121602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_124502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_124702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_125202042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_SignUpwithValid_Failed_165302042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_131102042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_131502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_141502042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_141702042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_141802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_142302042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_createDept_Failed_142402042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_login_Valid_UsernamePassword_Failed_115602042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_login_Valid_UsernamePassword_Failed_130802042024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshots/test_login_Valid_UsernamePassword_Failed_131002042024.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TestData/LoginData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/LoginData.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/krishnapageObjects/NewsfeedPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnapageObjects/NewsfeedPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/krishnatestCases/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/krishnatestCases/test_certification.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/test_certification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/krishnatestCases/test_newsfeed.py" beforeDir="false" afterPath="$PROJECT_DIR$/krishnatestCases/test_newsfeed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/ConfigurationPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/ConfigurationPage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pageObjects/LoginPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/LoginPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/companyListingPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/companyListingPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/randomGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/randomGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/test_companySignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_companySignUp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/test_configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObjects/productWarranty.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/productWarranty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testCases/test_PW.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/test_PW.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

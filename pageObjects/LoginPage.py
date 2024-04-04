@@ -15,7 +15,7 @@ class LoginPage:
     LoginText_Xpath = "//h1[contains(text(),'Login')]"
     createPost_xpath = "//span[@class='pdngXS brdrBlackSM postWidth brdrRadiusXSM pointer lightTxt feedHover']"
     NewsFeedText_xpath = "//span[contains(text(),'Create News Feed')]"
-    button_newsfeed_xpath = "//span[text()='news feed']"
+    button_newsfeed_xpath = "//body/div[@id='root']/div[1]/div[1]/div[1]/ul[1]/li[1]/div[1]"
     IncorrectLoginText_xpath = "//span[contains(text(),'Incorrect username or password.')]"
 
     def __init__(self,driver):
