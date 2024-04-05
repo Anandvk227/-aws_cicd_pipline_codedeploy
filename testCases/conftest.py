@@ -20,8 +20,8 @@ def driver(browser):
         firefox_options.binary_location = '/opt/firefox/firefox'
         firefox_options.add_argument('--headless')
 
-        self.driver = webdriver.Firefox(options=firefox_options)
-        self.driver.implicitly_wait(30)
+        driver = webdriver.Firefox(options=firefox_options)
+        driver.implicitly_wait(30)
         # driver = webdriver.Firefox()
         print("Launching Firefox browser.........")
     else:
