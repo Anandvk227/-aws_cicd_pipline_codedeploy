@@ -22,6 +22,7 @@ def driver(browser):
 
         driver = webdriver.Firefox(options=firefox_options)
         driver.implicitly_wait(30)
+        
         # driver = webdriver.Firefox()
         print("Launching Firefox browser.........")
     else:
