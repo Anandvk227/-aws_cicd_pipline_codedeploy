@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -9,7 +11,7 @@ class productWarranty():
     text_NoPW_registered = "//span[text()='No Warranty is registered']"
     button_register = "//button[text()='register']"
     txt_setSearchCompany = "//input[@placeholder = 'Search Company*']"
-    txt_searchField = "//input[@placeholder = 'Search for product/customer name']"
+    txt_searchField = "//input[@type= 'search']"
     txt_prdId = "//input[@id='prodId']"
     txt_serialNumber = "//input[@id='serialNumber']"
     txt_prodName = "//input[@id='prodName']"
@@ -38,12 +40,26 @@ class productWarranty():
     open_invoice = "//span[@class='capitalTxt primaryTxt pdngLXS pointer ellipsisTxt firstLetter ']"
     status_Pending = "//span[contains(text(),'Pending')]"
     iconStatus_Approve = "//tbody/tr[1]/td[8]/div[1]/span[1]/*[1]"
+    iconStatus_Reject = "//span[@aria-label='Reject']"
+    iconStatus_ConfReject = "//button[text()='Reject']"
     button_Continue = "//button[text()='Continue']"
     iconStatusConf_Approve = "//button[contains(text(),'Approve')]"
     close_Toast = "//button[@class='Toastify__close-button Toastify__close-button--light']"
-    icon_profile = "//div[@class='circle circleMD brdrBlackSM']"
+    icon_profile = "//div[@class='flexAutoRow pointer']"
     button_logout = "//span[contains(text(),'Log Out')]"
     button_Conflogout = "//button[contains(text(),'Logout')]"
+    Text_Purchase = "//span[text()='Purchase Date']"
+    Close_filePreview = "//button[@class='flexInline slideBtns slideDownBtn alignCntr justifyCntr']"
+    Download_filePreview = "//button[@class='flexInline slideBtns slideCloseBtn alignCntr justifyCntr']"
+    ################################ Status Filter ################################################
+    IconFilter = "(//*[name()='path'])[10]"
+    filterAll = "//span[text()='All']"
+    filterPending = "//body/div[@id='basic-menu']/div[3]/ul[1]/li[2]"
+    filterActive = "//body/div[@id='basic-menu']/div[3]/ul[1]/li[3]"
+    filterRejected = "//body/div[@id='basic-menu']/div[3]/ul[1]/li[4]"
+    filterExpired = "//body/div[@id='basic-menu']/div[3]/ul[1]/li[5]"
+    filterClear = "//span[contains(text(),'Clear')]"
+
 
     def __init__(self, driver):
         self.logger = None
@@ -60,7 +76,25 @@ class productWarranty():
             EC.element_to_be_clickable((By.XPATH, self.button_PW_Individual))
         )
         element.click()
+    def clickClose_filePreview(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.Close_filePreview))
+        )
+        element.click()
+    def clickDownload_filePreview(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.Download_filePreview))
+        )
+        element.click()
+
+    def clickPurchaseDate(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, self.Text_Purchase))
+        )
+        element.is_displayed()
+
     def clicklogoutButton(self):
+        time.sleep(0.5)
         element = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.button_logout))
         )
@@ -223,10 +257,24 @@ class productWarranty():
         )
         element.click()
     def clickiconStatus_Approve(self):
+        time.sleep(1)
         element = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.iconStatus_Approve))
         )
         element.click()
+    def clickiconStatus_Reject(self):
+        time.sleep(1)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.iconStatus_Reject))
+        )
+        element.click()
+    def clickiconStatus_ConfReject(self):
+        time.sleep(1)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.iconStatus_ConfReject))
+        )
+        element.click()
+
     def clickContinueButton(self):
         element = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.button_Continue))
@@ -237,6 +285,47 @@ class productWarranty():
             EC.element_to_be_clickable((By.XPATH, self.iconStatusConf_Approve))
         )
         element.click()
+
+    def clickIconFilter(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.IconFilter))
+        )
+        element.click()
+    def clickfilterAll(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterAll))
+        )
+        element.click()
+    def clickfilterPending(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterPending))
+        )
+        element.click()
+    def clickfilterActive(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterActive))
+        )
+        element.click()
+    def clickfilterClear(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterClear))
+        )
+        element.click()
+    def clickfilterRejected(self):
+        time.sleep(0.5)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterRejected))
+        )
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        element.click()
+    def clickfilterExpired(self):
+        time.sleep(0.5)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.filterExpired))
+        )
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        element.click()
+
 
 
 
