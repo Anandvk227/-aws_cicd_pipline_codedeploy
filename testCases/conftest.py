@@ -8,6 +8,7 @@ from selenium import webdriver
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 
 @pytest.fixture()
 def driver(browser):
@@ -15,7 +16,14 @@ def driver(browser):
         driver = webdriver.Chrome()
         print("Launching Chrome browser.........")
     elif browser == 'firefox':
-        driver = webdriver.Firefox()
+        firefox_options = FirefoxOptions()
+        firefox_options.binary_location = '/opt/firefox/firefox'
+        firefox_options.add_argument('--headless')
+
+        driver = webdriver.Firefox(options=firefox_options)
+        driver.implicitly_wait(30)
+        
+        # driver = webdriver.Firefox()
         print("Launching Firefox browser.........")
     else:
         driver = webdriver.Chrome()  # Default to Chrome if no browser specified

@@ -1,0 +1,49 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      # Install Python and other dependencies
+      - echo "Installing Python version 3.12 ..."
+      - pyenv global $PYTHON_312_VERSION
+      - python3 -m venv venv
+      - source venv/bin/activate
+      - pip install --upgrade pip
+      - pip install --upgrade pytest selenium pytest-html openpyxl pytest-xdist pytest-ordering 
+      - sudo yum install -y wget
+      - wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/124.0/linux-x86_64/en-US/firefox-124.0.tar.bz2
+      - tar xvjf firefox-124.0.tar.bz2
+      - sudo mv firefox /opt/
+      - sudo ln -s /opt/firefox/firefox /usr/bin/firefox
+      - sudo yum install gtk3 -y
+      - firefox --version
+      
+      # Download geckodriver
+      - wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
+      - tar -xvf geckodriver-v0.34.0-linux64.tar.gz
+      - sudo mv geckodriver /usr/local/bin/
+      - geckodriver --version
+
+      # Install Allure
+      - wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.17.0/allure-commandline-2.17.0.zip
+      - unzip allure-commandline-2.17.0.zip
+      - export PATH=$PATH:$(pwd)/allure-2.17.0/bin
+
+  build:
+    commands:
+      - pytest -v -s --html=Reports/report.html testCases/test_login.py --browser firefox 
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
+  post_build:
+    commands:
+      # Generate Allure report
+      - allure generate allure-results -o allure-report
+      # Upload the Allure report to S3
+      - aws s3 cp allure-report s3://qa-automation-testpurpose/allure-reports --recursive
+      # Upload the test report to S3 (if needed)
+      - aws s3 cp Reports/report.html s3://qa-automation-testpurpose/testing
+
