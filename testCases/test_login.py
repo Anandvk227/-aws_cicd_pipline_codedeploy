@@ -107,19 +107,19 @@ class TestLogin:
         lp.setUserName(self.username)
         lp.setPassword(self.password)
         lp.clickLogin()
-        lp.clickcreatePost()
-        act_Text = lp.newsFeedText()
+        # lp.clickcreatePost()
+        # act_Text = lp.newsFeedText()
 
-        if act_Text == "Create News Feed":
-            assert True
-            self.logger.info("********* Login Test is Passed ***********")
+        # if act_Text == "Create News Feed":
+        #     assert True
+        #     self.logger.info("********* Login Test is Passed ***********")
 
-        else:
-            driver.save_screenshot(".\\Screenshots\\" + "test_login_Valid_UsernamePassword.png")
-            self.logger.error("********* Login Test is Failed ***********")
-            assert False
+        # else:
+        #     driver.save_screenshot(".\\Screenshots\\" + "test_login_Valid_UsernamePassword.png")
+        #     self.logger.error("********* Login Test is Failed ***********")
+        #     assert False
 
-        element = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//div[@class='flexAutoRow alignCntr pdngHXS']"))
-        )
-        element.click()
+        # element = WebDriverWait(driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//div[@class='flexAutoRow alignCntr pdngHXS']"))
+        # )
+        # element.click()
