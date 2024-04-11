@@ -12,19 +12,14 @@ phases:
       - source venv/bin/activate
       - pip install --upgrade pip
       - pip install --upgrade pytest selenium pytest-html openpyxl pytest-xdist pytest-ordering 
-      - sudo yum install -y wget
+      - sudo yum install -y wget gtk3
       - wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/124.0/linux-x86_64/en-US/firefox-124.0.tar.bz2
-      - tar xvjf firefox-124.0.tar.bz2
-      - sudo mv firefox /opt/
+      - tar xvjf firefox-124.0.tar.bz2 -C /opt/
       - sudo ln -s /opt/firefox/firefox /usr/bin/firefox
-      - sudo yum install gtk3 -y
-      - firefox --version
       
       # Download geckodriver
       - wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
-      - tar -xvf geckodriver-v0.34.0-linux64.tar.gz
-      - sudo mv geckodriver /usr/local/bin/
-      - geckodriver --version
+      - tar -xvf geckodriver-v0.34.0-linux64.tar.gz -C /usr/local/bin/
 
       # Install Allure
       - wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.17.0/allure-commandline-2.17.0.zip
@@ -41,6 +36,5 @@ phases:
       - allure generate allure-results -o allure-report
       # Upload the Allure report to S3
       - aws s3 cp allure-report s3://qa-automation-testpurpose/allure-reports --recursive
-      # Upload the test report to S3 (if needed)
+      # Upload the test report to S3
       - aws s3 cp Reports/report.html s3://qa-automation-testpurpose/TestReport
-
