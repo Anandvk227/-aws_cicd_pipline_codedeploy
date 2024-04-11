@@ -11,7 +11,7 @@ phases:
       - python3 -m venv venv
       - source venv/bin/activate
       - pip install --upgrade pip
-      - pip install --upgrade pytest selenium pytest-html openpyxl pytest-xdist pytest-ordering 
+      - pip install --upgrade pytest selenium pytest-html openpyxl pytest-xdist pytest-ordering allure-pytest
       - sudo yum install -y wget gtk3
       - wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/124.0/linux-x86_64/en-US/firefox-124.0.tar.bz2
       - tar xvjf firefox-124.0.tar.bz2 -C /opt/
