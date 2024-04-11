@@ -34,10 +34,10 @@ phases:
   build:
     commands:
       - pytest -v -s --html=Reports/report.html testCases/test_login.py --browser firefox 
-# artifacts:
-#   files:
-#     - '**/*'
-#   discard-paths: yes
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
   post_build:
     commands:
       # Generate Allure report
@@ -45,5 +45,5 @@ phases:
       # Upload the Allure report to S3
       - aws s3 cp allure-report s3://qa-automation-testpurpose/allure-reports --recursive
       # Upload the test report to S3 (if needed)
-      - aws s3 cp .Reports/report.html s3://qa-automation-testpurpose/testing
+      - aws s3 cp Reports/report.html s3://qa-automation-testpurpose/testreports
 
