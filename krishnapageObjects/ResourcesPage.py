@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Resources:
-    ContentManagemaent_xpath = "//span[normalize-space()='Content Management']"
+    ContentManagemaent_xpath = "//span[normalize-space()='Content']"
     Categorynew_xpath = "//button[normalize-space()='New']"
     categoryimage_xpath = "//input[@id='preview']"
     categoryimagesave_xpath = "//button[contains(text(),'Save')]"
@@ -44,7 +44,8 @@ class Resources:
     sectionimagedescription_xpath = "//textarea[@id='description']"
     sectionsave_xpath = "//button[contains(text(),'Save')]"
     contentpublish_xpath = "//button[normalize-space()='Publish']"
-    resources_xpath = "//span[normalize-space()='Resources']"
+    menu_xpath = "//div[@class='flexAutoRow mobHamburgerBox mobShow alignCntr justifyCntr']"
+    resources_xpath = "(//span[normalize-space()='Resources'])[2]"
     resourcescategorysearch_xpath = "//input[@placeholder='Search Categories']"
     logout_xpath = "//span[text()='Log out']"
     networkresources_xpath = "//button[normalize-space()='NETWORK RESOURCES']"
@@ -353,6 +354,10 @@ class Resources:
 
     def clickonresources(self):
         time.sleep(1)
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, self.menu_xpath)))
+        self.driver.find_element(By.XPATH, self.menu_xpath).click()
+        time.sleep(2)
         WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.XPATH, self.resources_xpath)))
         self.driver.find_element(By.XPATH,self.resources_xpath).click()

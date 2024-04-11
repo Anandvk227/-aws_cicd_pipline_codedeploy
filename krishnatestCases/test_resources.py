@@ -77,7 +77,7 @@ class Test_Resources():
 
     logger = LogGen.loggen()  # Logger
 
-    @pytest.mark.test
+    @pytest.mark.tests
     @pytest.mark.krishna
     @pytest.mark.regression
     @pytest.mark.run(order=64)
