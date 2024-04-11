@@ -34,10 +34,7 @@ phases:
   build:
     commands:
       - pytest -v -s --html=Reports/report.html testCases/test_login.py --browser firefox 
-artifacts:
-  files:
-    - '**/*'
-  discard-paths: yes
+
   post_build:
     commands:
       # Generate Allure report
