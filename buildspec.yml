@@ -37,4 +37,4 @@ phases:
       # Upload the Allure report to S3
       - aws s3 cp allure-report s3://qa-automation-testpurpose/allure-reports --recursive
       # Upload the test report to S3
-      - aws s3 cp s3://qa-automation-testpurpose/TestReport . --recursive
+    #   - aws s3 cp s3://qa-automation-testpurpose/TestReport . --recursive
